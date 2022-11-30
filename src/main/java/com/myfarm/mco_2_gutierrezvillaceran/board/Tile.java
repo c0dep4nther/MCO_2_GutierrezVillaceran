@@ -1,178 +1,118 @@
 package com.myfarm.mco_2_gutierrezvillaceran.board;
 
-import com.myfarm.mco_2_gutierrezvillaceran.FarmerDetails;
-import com.myfarm.mco_2_gutierrezvillaceran.Plants;
+import com.myfarm.mco_2_gutierrezvillaceran.Plant;
 import com.myfarm.mco_2_gutierrezvillaceran.TileStatus;
 
 public class Tile {
-    private boolean isPlowed;
-    private boolean isWithered;
-    private boolean seedPlanted;
-    private boolean harvestReady;
     private TileStatus status;
-    private Plants cropName;
-    private Plants cropType;
+    private Plant crop;
+    private String cropName;
+    private String cropType;
     private int waterLevel;
     private int fertilizerLevel;
-    private int randomProd;
-    private float harvestTotal;
-    private float waterBonus;
-    private float fertilizerBonus;
-    private float finalHarvestPrice;
+    private int harvestDate;
 
-    // tile constructor
+    /**
+     * tile constructor
+     */
     public Tile() {
-        isPlowed = false;
-        isWithered = false;
-        seedPlanted = false;
-        harvestReady = false;
         status = TileStatus.UNPLOWED;
+        crop = null;
         cropName = null;
         cropType = null;
         waterLevel = 0;
         fertilizerLevel = 0;
     }
 
-    // plow tile using the Plow class
-    public void plowTile() {
-        isPlowed = true;
-    }
+    // getters
 
-//    getters
-    public boolean isPlowed() {
-        return isPlowed;
-    }
-
-    public boolean isWithered() {
-        return isWithered;
-    }
-
-    public boolean isSeedPlanted() {
-        return seedPlanted;
-    }
-
-    public boolean isHarvestReady() {
-        return harvestReady;
-    }
-
+    /**
+     *
+     * @return tile status
+     */
     public TileStatus getStatus() {
         return status;
     }
 
-    public Plants getCropName() {
+    /**
+     *
+     * @return plant/crop
+     */
+    public Plant getCrop() {
+        return crop;
+    }
+
+    /**
+     *
+     * @return crop name
+     */
+    public String getCropName() {
         return cropName;
     }
 
-    public Plants getCropType() {
-        return cropType;
-    }
-
+    /**
+     *
+     * @return level of water applied
+     */
     public int getWaterLevel() {
         return waterLevel;
     }
 
+    /**
+     *
+     * @return date of plant's harvest
+     */
+    public int getHarvestDate() {
+        return harvestDate;
+    }
+
+    /**
+     *
+     * @return amount of fertilizer applied
+     */
     public int getFertilizerLevel() {
         return fertilizerLevel;
     }
 
-    public int getRandomProd() {
-        return randomProd;
-    }
+    // setters
 
-    public float getHarvestTotal() {
-        return harvestTotal;
-    }
-
-    public float getWaterBonus() {
-        return waterBonus;
-    }
-
-    public float getFertilizerBonus() {
-        return fertilizerBonus;
-    }
-
-    public float getFinalHarvestPrice() {
-        return finalHarvestPrice;
-    }
-
-    //    setters
-    public void setPlowed(boolean plowed) {
-        isPlowed = plowed;
-    }
-
-    public void setWithered(boolean withered) {
-        isWithered = withered;
-    }
-
-    public void setSeedPlanted(boolean seedPlanted) {
-        this.seedPlanted = seedPlanted;
-    }
-
-    public void setHarvestReady(boolean harvestReady) {
-        this.harvestReady = harvestReady;
-    }
-
-    public void setWaterLevel(int waterLimit) {
-        if(getWaterLevel()<waterLimit){
-            this.waterLevel++;
-        }
-        else{
-            System.out.println("WARNING: Reached water bonus limit!");
-            System.out.println();
-        }
-    }
-
-    public void setFertilizerLevel(FarmerDetails player, int fertilizerLimit) {
-        if(getFertilizerLevel()<fertilizerLimit){
-            player.setFertilizerCount(player.getFertilizerCount()-1);
-            this.fertilizerLevel++;
-        }
-        else{
-            System.out.println("WARNING: Reached fertilizer bonus limit!");
-            System.out.println();
-        }
-    }
-
-    public void setCropName(Plants cropName) {
-        this.cropName = cropName;
-    }
-
+    /**
+     *
+     * @param status status of tile
+     */
     public void setStatus(TileStatus status) {
         this.status = status;
     }
 
-    public void setRandomProd(Plants p) {
-        this.randomProd =(int)Math.floor(Math.random()*(p.getMaxProduce()-p.getMinProduce()+1)+ p.getMinProduce());
-    }
-
-    public void setHarvestTotal(FarmerDetails player, Plants p) {
-        this.harvestTotal =getRandomProd()*(p.getSellPrice()+player.getFarmerStatus().getEarning());
-    }
-
-    public void setWaterBonus() {
-        this.waterBonus = getHarvestTotal()*0.2f*(getWaterLevel()-1);
-    }
-
-    public void setFertilizerBonus() {
-        this.fertilizerBonus = getHarvestTotal()*0.5f*getFertilizerLevel();
-    }
-
-    public void setFinalHarvestPrice(float finalHarvestPrice) {
-        this.finalHarvestPrice = getHarvestTotal()+getWaterBonus()+getFertilizerBonus();
-    }
-
-    public void displayTileDetails(int tileNumber){
-        // on the chosen tile print the details
-        System.out.println("TILE " + tileNumber + " DETAILS: ");
-        // print the tile details
-        System.out.println("Status: " + getStatus());
-        if(getStatus()==TileStatus.PLANTED){
-            System.out.println("Crop planted: "+getCropName().getName());
-            System.out.println("Water level: "+getWaterLevel());
-            System.out.println("Fertilizer Level: "+getFertilizerLevel());
+    /**
+     *
+     * @param waterLevel amount of water applied
+     */
+    public void setWaterLevel(int waterLevel) {
+        if (crop == null){
+            return;
         }
-
-        System.out.println();
+        this.waterLevel = waterLevel;
     }
 
+    /**
+     *
+     * @param harvestDate date of plant's harvest
+     * @param harvestTime amount of days for plant to be harvested
+     */
+    public void setHarvestDate(int harvestDate, int harvestTime) {
+        // get harvest time from crop
+        // add it to day count from board
+        this.harvestDate = harvestDate + harvestTime;
+    }
+
+    /**
+     *
+     * @param crop plant details
+     */
+    public void setCrop(Plant crop) {
+        this.crop = crop;
+        this.cropName = crop.getName();
+        this.cropType = crop.getType();
+    }
 }

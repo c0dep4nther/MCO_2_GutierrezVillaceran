@@ -1,6 +1,9 @@
 package com.myfarm.mco_2_gutierrezvillaceran;
 
 public enum FarmerType {
+    /**
+     * enumerate status of farmer
+     */
     FARMER("Farmer",0,0,
             0,0,0,
             0),
@@ -23,7 +26,19 @@ public enum FarmerType {
     private final int fertilizerBL;
     private final int registrationFee;
 
-    FarmerType(String farmerType, int levelRequirement, int bonusEarn, int seedDiscount, int waterBL, int fertilizerBL, int registrationFee) {
+    /**
+     *
+     * @param farmerType name of farmer type
+     * @param levelRequirement level requirement for updated farmer type
+     * @param bonusEarn bonus points earned
+     * @param seedDiscount seed discount
+     * @param waterBL water bonus limit
+     * @param fertilizerBL fertilizer bonus limit
+     * @param registrationFee registration fee
+     */
+    FarmerType(String farmerType, int levelRequirement, int bonusEarn,
+               int seedDiscount, int waterBL, int fertilizerBL,
+               int registrationFee) {
         this.farmerType = farmerType;
         this.levelRequirement = levelRequirement;
         this.bonusEarn = bonusEarn;
@@ -33,30 +48,58 @@ public enum FarmerType {
         this.registrationFee = registrationFee;
     }
 
+    /**
+     *
+     * @return farmer type
+     */
     public String getFarmerType() {
         return farmerType;
     }
 
+    /**
+     *
+     * @return level requirement
+     */
     public int getLevelRequirement() {
         return levelRequirement;
     }
 
+    /**
+     *
+     * @return water bonus limit
+     */
     public int getWaterBL() {
         return waterBL;
     }
 
+    /**
+     *
+     * @return fertilizer bonus limit
+     */
     public int getFertilizerBL() {
         return fertilizerBL;
     }
 
+    /**
+     *
+     * @return registration fee
+     */
     public int getRegistrationFee() {
         return registrationFee;
     }
 
+    /**
+     *
+     * @return bonus earned
+     */
     public int getBonusEarn() {
         return bonusEarn;
     }
 
+    /**
+     *
+     * @return seed discount
+     */
     public int getSeedDiscount() {
         return seedDiscount;
     }

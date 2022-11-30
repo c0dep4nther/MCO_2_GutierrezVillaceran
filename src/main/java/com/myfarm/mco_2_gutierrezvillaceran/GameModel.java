@@ -2,26 +2,29 @@ package com.myfarm.mco_2_gutierrezvillaceran;
 
 import com.myfarm.mco_2_gutierrezvillaceran.board.Board;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
 
 public class GameModel {
     private Board gameBoard = new Board();
-    private FarmerDetails farmerDetails = new FarmerDetails();
+    private Farmer player = new Farmer();
+    private final HashMap<Integer, Plant> seedList = new HashMap<>();
+    public final HashMap<String, Tool> toolInventory = new HashMap<>();
 
-    private static final List<Plants> seedList = new ArrayList<>(Arrays.asList(
-            new Plants("Turnip", "Root crop", 2,1,
-                    0,1,2,5,
-                    6,5f),
-            new Plants("Carrot","Root crop",3,1,
-                    0,1,2,10,
-                    9,7.5f),
-            new Plants("Rose","Flower",1,1,
-                    0,1,1,5,
-                    5,2.5f),
-            new Plants("Tulips","Flower",2,2,
-                    0,1,1,10,
-                    9,5)
-    ));
+    public void addSeed(int seedID, Plant seed) {
+        seedList.put(seedID, seed);
+    }
+
+    public void addTool(String toolID, Tool tool) {
+        toolInventory.put(toolID, tool);
+    }
+
+    // getters
+    public int getDayCount() {
+        return gameBoard.getDayCount();
+    }
+
+    public float getMoney() {
+        return player.getMoney();
+    }
+
 }
