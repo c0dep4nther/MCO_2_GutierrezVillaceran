@@ -1,8 +1,8 @@
 package com.myfarm.mco_2_gutierrezvillaceran.board;
 
-import myfarm.FarmerDetails;
-import myfarm.Plants;
-import myfarm.TileStatus;
+import com.myfarm.mco_2_gutierrezvillaceran.FarmerDetails;
+import com.myfarm.mco_2_gutierrezvillaceran.Plants;
+import com.myfarm.mco_2_gutierrezvillaceran.TileStatus;
 
 public class Tile {
     private boolean isPlowed;
@@ -122,7 +122,7 @@ public class Tile {
         }
     }
 
-    public void setFertilizerLevel(FarmerDetails player,int fertilizerLimit) {
+    public void setFertilizerLevel(FarmerDetails player, int fertilizerLimit) {
         if(getFertilizerLevel()<fertilizerLimit){
             player.setFertilizerCount(player.getFertilizerCount()-1);
             this.fertilizerLevel++;

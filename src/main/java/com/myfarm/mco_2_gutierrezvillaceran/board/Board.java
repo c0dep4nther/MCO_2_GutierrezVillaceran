@@ -1,6 +1,6 @@
 package com.myfarm.mco_2_gutierrezvillaceran.board;
 
-import myfarm.TileStatus;
+import com.myfarm.mco_2_gutierrezvillaceran.TileStatus;
 
 import java.util.HashMap;
 
