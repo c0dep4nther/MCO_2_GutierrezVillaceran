@@ -3,7 +3,7 @@ package com.myfarm.mco_2_gutierrezvillaceran;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class GameController {
     @FXML
     private Label welcomeText;
 
