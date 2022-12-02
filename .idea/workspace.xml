@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="Fixed Broken Code after File Transfer">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/Farmer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/Plant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/Tool.java" afterDir="false" />
+    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="URGENT: Replaced Files&#10;&#10;- previous source came from an older commit of MCO1&#10;- proper replacement files now included">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/FarmerDetails.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/FarmerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/FarmerType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/Plants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/TileStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/TileStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/Tools.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/board/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/board/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,6 +80,29 @@
       <recent name="com.myfarm.mco_2_gutierrezvillaceran" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="MCO_2_GutierrezVillaceran [:GameApplication.main()]" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":GameApplication.main()" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -122,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669802173650</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="URGENT: Replaced Files&#10;&#10;- previous source came from an older commit of MCO1&#10;- proper replacement files now included">
+      <created>1669826789057</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669826789057</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,7 +158,8 @@
     <MESSAGE value="Initial GUI Build for MyFarm" />
     <MESSAGE value="Updated file names" />
     <MESSAGE value="Fixed Broken Code after File Transfer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Broken Code after File Transfer" />
+    <MESSAGE value="URGENT: Replaced Files&#10;&#10;- previous source came from an older commit of MCO1&#10;- proper replacement files now included" />
+    <option name="LAST_COMMIT_MESSAGE" value="URGENT: Replaced Files&#10;&#10;- previous source came from an older commit of MCO1&#10;- proper replacement files now included" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
