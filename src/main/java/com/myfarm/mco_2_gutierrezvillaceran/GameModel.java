@@ -27,4 +27,12 @@ public class GameModel {
         return player.getMoney();
     }
 
+    public int getLevel() {
+        return player.getLevel();
+    }
+
+    public float getExp() {
+        return player.getTotalExp();
+    }
+
 }

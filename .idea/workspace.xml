@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="URGENT: Replaced Files&#10;&#10;- previous source came from an older commit of MCO1&#10;- proper replacement files now included">
+    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="Added Grid Buttons&#10;&#10;- listeners are subject to implementation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669826789057</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Grid Buttons&#10;&#10;- listeners are subject to implementation">
+      <created>1669985550149</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669985550149</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,7 +167,8 @@
     <MESSAGE value="Updated file names" />
     <MESSAGE value="Fixed Broken Code after File Transfer" />
     <MESSAGE value="URGENT: Replaced Files&#10;&#10;- previous source came from an older commit of MCO1&#10;- proper replacement files now included" />
-    <option name="LAST_COMMIT_MESSAGE" value="URGENT: Replaced Files&#10;&#10;- previous source came from an older commit of MCO1&#10;- proper replacement files now included" />
+    <MESSAGE value="Added Grid Buttons&#10;&#10;- listeners are subject to implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Grid Buttons&#10;&#10;- listeners are subject to implementation" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
