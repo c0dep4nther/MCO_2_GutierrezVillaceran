@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Board {
     // use hashmap to store integer as key and then tile as value
     private final HashMap<Integer, Tile> tiles = new HashMap<>();
+    private boolean plantSuccess = false;
     private int dayCount = 1;
 
     /**
@@ -121,5 +122,15 @@ public class Board {
             }
         }
         System.out.println();
+    }
+
+    // getters
+    public boolean getPlantSuccess() {
+        return plantSuccess;
+    }
+
+    // setters
+    public void setPlantSuccess(boolean plantSuccess) {
+        this.plantSuccess = plantSuccess;
     }
 }

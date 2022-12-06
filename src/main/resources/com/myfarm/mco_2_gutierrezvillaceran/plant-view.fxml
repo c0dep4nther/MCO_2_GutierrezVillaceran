@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfarm.mco_2_gutierrezvillaceran.PlantController">
+   <children>
+      <ButtonBar layoutX="107.0" layoutY="150.0" prefHeight="40.0" prefWidth="370.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#onSelectSeed" text="TURNIP" />
+            <Button mnemonicParsing="false" onAction="#onSelectSeed" text="CARROT" />
+            <Button mnemonicParsing="false" onAction="#onSelectSeed" text="POTATO" />
+            <Button mnemonicParsing="false" onAction="#onSelectSeed" text="ROSE" />
+        </buttons>
+      </ButtonBar>
+      <ButtonBar layoutX="105.0" layoutY="210.0" prefHeight="40.0" prefWidth="390.0">
+         <buttons>
+            <Button mnemonicParsing="false" onAction="#onSelectSeed" text="TULIP" />
+            <Button mnemonicParsing="false" onAction="#onSelectSeed" prefHeight="26.0" prefWidth="87.0" text="SUNFLOWER" />
+            <Button mnemonicParsing="false" onAction="#onSelectSeed" text="MANGO" />
+            <Button mnemonicParsing="false" onAction="#onSelectSeed" text="APPLE" />
+         </buttons>
+      </ButtonBar>
+      <Label alignment="CENTER" layoutX="219.0" layoutY="84.0" prefHeight="48.0" prefWidth="161.0" text="Select a crop to plant" textAlignment="CENTER" />
+      <Button layoutX="251.0" layoutY="291.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel Planting" />
+   </children>
+</AnchorPane>

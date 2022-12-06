@@ -35,18 +35,18 @@
       <ButtonBar layoutX="29.0" layoutY="515.0" prefHeight="40.0" prefWidth="200.0">
         <buttons>
             <Button fx:id="plowBtn" mnemonicParsing="false" onAction="#onToolBtnClick" text="Plow" />
-            <Button fx:id="plantBtn" mnemonicParsing="false" onAction="#onToolBtnClick" text="Plant" />
-            <Button fx:id="water" mnemonicParsing="false" onAction="#onToolBtnClick" text="Water" />
-            <Button fx:id="fertilize" mnemonicParsing="false" onAction="#onToolBtnClick" text="Fertilize" />
+            <Button fx:id="plantBtn" mnemonicParsing="false" onAction="#onPlantSeed" text="Plant" />
+            <Button fx:id="waterBtn" mnemonicParsing="false" onAction="#onToolBtnClick" text="Water" />
+            <Button fx:id="fertilizeBtn" mnemonicParsing="false" onAction="#onToolBtnClick" text="Fertilize" />
           <Button fx:id="harvestBtn" mnemonicParsing="false" onAction="#onToolBtnClick" text="Harvest" />
-            <Button fx:id="shovel" mnemonicParsing="false" onAction="#onToolBtnClick" text="Shovel" />
-            <Button fx:id="pickaxe" mnemonicParsing="false" onAction="#onToolBtnClick" text="Pickaxe" />
+            <Button fx:id="shovelBtn" mnemonicParsing="false" onAction="#onToolBtnClick" text="Shovel" />
+            <Button fx:id="pickaxeBt" mnemonicParsing="false" onAction="#onToolBtnClick" text="Pickaxe" />
         </buttons>
       </ButtonBar>
       <ButtonBar layoutX="242.0" layoutY="568.0" prefHeight="40.0" prefWidth="180.0">
         <buttons>
           <Button mnemonicParsing="false" text="Sleep" />
-            <Button mnemonicParsing="false" text="Quit" />
+            <Button mnemonicParsing="false" text="Register" />
         </buttons>
       </ButtonBar>
       <Label fx:id="report" alignment="CENTER" layoutX="243.0" layoutY="622.0" prefHeight="68.0" prefWidth="182.0" text="Game Report" textAlignment="CENTER" textOverrun="CLIP" />

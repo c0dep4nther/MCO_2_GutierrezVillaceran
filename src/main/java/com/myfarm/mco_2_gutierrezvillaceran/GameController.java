@@ -2,76 +2,58 @@ package com.myfarm.mco_2_gutierrezvillaceran;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
-    private enum action {
-        PLANT, WATER, PLOW, HARVEST, SHOVEL, PICKAXE
-    }
     private final GameModel gameModel = new GameModel();
+    private FarmerAction mode;
+    private String seedName;
     private int currentDay;
     private int playerLevel;
     private float playerExp;
     private float playerMoney;
-    private action mode;
 
     @FXML
     private Label gameInfo;
     @FXML
     private Label report;
     @FXML
-    private Button myButton;
-    @FXML
-    private Button plantBtn;
-    @FXML
-    private Button harvestBtn;
-    @FXML
-    private Button waterBtn;
-    @FXML
-    private Button fertilize;
-    @FXML
-    private Button shovel;
-    @FXML
-    private Button pickaxe;
-    @FXML
-    private Button plowBtn;
-    @FXML
-    private Button tileBtn;
-    @FXML
     private GridPane farmGrid;
-    private Stage stage;
+    private Button tileBtn;
 
-
-    String choice;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // initialize seeds
-        gameModel.addSeed(1, new Plant("Turnip", "Root Crop", 2,
+        gameModel.addSeed("TURNIP", new Plant("Turnip", "Root Crop", 2,
                 1, 2,0, 1,2,
                 1, 5, 6, 5));
-        gameModel.addSeed(2, new Plant("Carrot", "Root Crop", 3,
+        gameModel.addSeed("CARROT", new Plant("Carrot", "Root Crop", 3,
                 1,2,0,1,2, 1,
                 10, 9, 7.5f));
 
         // initialize tools
         gameModel.addTool("WATER", new Tool("Watering Can", 0, 0.5f));
         gameModel.addTool("PLOW", new Tool("Plow", 0, 0.5f));
+        report.setText("");
 
-        updateReport();
-        addButtons();
+        updateGameInfo();
+        gridBtnInit();
     }
 
-    public void updateReport() {
+    public void updateGameInfo() {
         currentDay = gameModel.getDayCount();
         playerMoney = gameModel.getMoney();
         playerLevel = gameModel.getLevel();
@@ -80,38 +62,74 @@ public class GameController implements Initializable {
                 "\nLevel: " + playerLevel + "\t\t\tExp: " + playerExp);
     }
 
-//        TODO: complete plow and water
-    public void onToolBtnClick(ActionEvent actionEvent) {
-        String tool = ((Button) actionEvent.getSource()).getText().toLowerCase();
+//        TODO: Implement Tools and Planting Features
+    public void onToolBtnClick(ActionEvent event) {
+        String tool = ((Button) event.getSource())
+                .getText()
+                .toLowerCase();
 
-        setTileVisibility(true);
+        toggleTile(true);
 
         switch (tool) {
-            case "plant" -> mode = action.PLANT;
-            case "harvest" -> mode = action.HARVEST;
-            case "water" -> mode = action.WATER;
-            case "plow" -> mode = action.PLOW;
-            case "shovel" -> mode = action.SHOVEL;
-            case "pickaxe" -> mode = action.PICKAXE;
-
+            case "harvest" -> mode = FarmerAction.HARVEST;
+            case "water" -> mode = FarmerAction.WATER;
+            case "plow" -> mode = FarmerAction.PLOW;
+            case "shovel" -> mode = FarmerAction.SHOVEL;
+            case "pickaxe" -> mode = FarmerAction.PICKAXE;
         }
-            report.setText("You are in " + tool + " mode." +
-                    "\nPlease Select a tile.");
+
+        report.setText("You are in " + tool + " mode." +
+                "\nPlease Select a tile.");
     }
 
-    public void onTileBtnClick(ActionEvent actionEvent) {
-        if (mode == action.PLOW) {
-//            gameModel.plow();
+    public void onTileBtnClick(ActionEvent event) {
+        String tempTileID = ((Button) event.getSource())
+                .getText()
+                .substring(5);
+        int tileID = Integer.parseInt(tempTileID);
+
+        switch (mode) {
+            case PLOW -> {
+                gameModel.activeTool("PLOW", tileID);
+                report.setText("You plowed tile " + tileID + ".");
+                toggleTile(false);
+            }
+            case PLANT -> {
+                boolean plantSuccess = gameModel.getPlantSuccess();
+                gameModel.plantSeed(seedName, tileID);
+                report.setText("You planted " + seedName + " on tile " + tileID + ".");
+                toggleTile(false);
+            }
+            case WATER -> {
+                gameModel.activeTool("WATER", tileID);
+                report.setText("You watered tile " + tileID + ".");
+                toggleTile(false);
+            }
         }
-        updateReport();
+
+        updateGameInfo();
     }
 
-    public void addButtons() {
+    public void onPlantSeed(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("plant-view.fxml"));
+        Stage stage;
+        Scene scene;
+        Parent root = loader.load();
+        PlantController plantController = loader.getController();
+
+        // load plant view
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void gridBtnInit() {
         int count = 1;
         int row;
         int column;
 
-
+        // loop through grid and add buttons
         for (column = 0; column < 5; column++) {
             for (row = 0; row < 10; row++) {
                 tileBtn = new Button();
@@ -121,8 +139,6 @@ public class GameController implements Initializable {
                 tileBtn.setVisible(false);
                 farmGrid.add(tileBtn, column, row);
                 count+=5;
-
-                // hide tiles
 
                 // center align grid elements
                 GridPane.setHalignment(tileBtn, HPos.CENTER);
@@ -139,11 +155,11 @@ public class GameController implements Initializable {
         }
     }
 
-     public void setTileVisibility(boolean actionClicked) {
+     public void toggleTile(boolean toggle) {
         int count;
 
         // if there is an action, show the tiles
-        if (actionClicked) {
+        if (toggle) {
             for (count = 1; count <= 50; count++) {
                 tileBtn = (Button) farmGrid.lookup("#tile" + count);
                 tileBtn.setVisible(true);
@@ -155,4 +171,13 @@ public class GameController implements Initializable {
             }
         }
      }
+
+     // setters
+    public void setMode(FarmerAction mode) {
+        this.mode = mode;
+    }
+
+    public void setSeedName(String seedName) {
+        this.seedName = seedName;
+    }
 }

@@ -30,34 +30,20 @@ public class Farmer {
 
     /**
      *
-     * @param object tool used
+     * @param item tool used
      * @param farmLand initialized board
      * @return updated board
      */
-    public Board useTool(Tool object, Board farmLand) {
-        Scanner input = new Scanner(System.in);
-        int tileNumber = input.nextInt();
+    public Board useTool(Tool item, Board farmLand, int tileNumber) {
         Tile farmLot;
 
-        // protect input from out of bounds
-        while (tileNumber < 1 || tileNumber > 50) {
-            System.out.println("Please enter a valid tile number.");
-            tileNumber = input.nextInt();
-        }
-
         farmLot = farmLand.getTile(tileNumber);
-
-        System.out.println("Using " + object.getName() + "...");
-        object.toolAction(farmLot);
-        exp += object.getExpGain();
+        item.toolAction(farmLot);
+        exp += item.getExpGain();
 
         // set status to board
         farmLand.getTile(tileNumber).setStatus(farmLot.getStatus());
         levelUp();
-
-        System.out.println("Press enter to continue...");
-        input.nextLine();
-        input.nextLine();
 
         return farmLand;
     }
@@ -68,37 +54,27 @@ public class Farmer {
      * @param farmLand board
      * @return updated board
      */
-    public Board plantSeed(Plant seed,  Board farmLand) {
-        Scanner input = new Scanner(System.in);
+    public Board plantSeed(Plant seed,  Board farmLand, int tileNumber) {
         int dayCount = farmLand.getDayCount();
         int harvestTime = seed.getHarvestTime();
-        int tileNumber = input.nextInt();
-        Tile farmLot;
+        Tile farmLot = farmLand.getTile(tileNumber);
 
-        // protect input from out of bounds
-        while (tileNumber < 1 || tileNumber > 50) {
-            System.out.println("Please enter a valid tile number.");
-            tileNumber = input.nextInt();
-        }
-
-        farmLot = farmLand.getTile(tileNumber);
+        // TODO: adjust for planting trees
 
         // if tile is plowed and empty, plant seed
         if (farmLot.getStatus() == TileStatus.PLOWED) {
             farmLot.setCrop(seed);
             farmLot.setStatus(TileStatus.PLANTED);
             farmLot.setHarvestDate(dayCount, harvestTime);
+            farmLand.setPlantSuccess(true);
             money -= seed.getSeedCost();
             farmLand.getTile(tileNumber).setCrop(seed);
             System.out.println("You planted " + seed.getName() + " which costs " + seed.getSeedCost() + " Objectcoins.");
             System.out.println("Harvest is in " + harvestTime + " days.");
         } else {
+            farmLand.setPlantSuccess(false);
             System.out.println("You can't plant a seed on a tile that is occupied or isn't plowed.");
         }
-
-        System.out.println("Press enter to continue...");
-        input.nextLine();
-        input.nextLine();
 
         return farmLand;
     }
