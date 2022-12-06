@@ -1,6 +1,7 @@
 package com.myfarm.mco_2_gutierrezvillaceran;
 
 import com.myfarm.mco_2_gutierrezvillaceran.board.Board;
+import com.myfarm.mco_2_gutierrezvillaceran.board.Tile;
 
 import java.util.HashMap;
 
@@ -47,5 +48,13 @@ public class GameModel {
 
     public float getExp() {
         return player.getTotalExp();
+    }
+
+    public Tile getTile(int tileID) {
+        return farmLand.getTile(tileID);
+    }
+
+    public TileStatus getTileStatus(int tileID) {
+        return farmLand.getTile(tileID).getStatus();
     }
 }

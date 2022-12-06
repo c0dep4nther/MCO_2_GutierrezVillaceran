@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="Added Event Listener for Tools and Tiles&#10;&#10;- status report will be shown on which tool is active&#10;- tile and tool buttons share a single listener&#10;- when there's no tool active, tile buttons are hidden">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/FarmerAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/PlantController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/plant-view.fxml" afterDir="false" />
+    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="Add Separate Page when Planting Crops&#10;&#10;- partial implementation of planting&#10;- added buttons and listeners for transition between pages&#10;- seed selection is available but non-functional&#10;- added planting success tracker in Board Class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/Farmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/Farmer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/PlantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/PlantController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669995241748</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add Separate Page when Planting Crops&#10;&#10;- partial implementation of planting&#10;- added buttons and listeners for transition between pages&#10;- seed selection is available but non-functional&#10;- added planting success tracker in Board Class">
+      <created>1670334665037</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670334665037</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,12 +186,14 @@
     <MESSAGE value="URGENT: Replaced Files&#10;&#10;- previous source came from an older commit of MCO1&#10;- proper replacement files now included" />
     <MESSAGE value="Added Grid Buttons&#10;&#10;- listeners are subject to implementation" />
     <MESSAGE value="Added Event Listener for Tools and Tiles&#10;&#10;- status report will be shown on which tool is active&#10;- tile and tool buttons share a single listener&#10;- when there's no tool active, tile buttons are hidden" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Event Listener for Tools and Tiles&#10;&#10;- status report will be shown on which tool is active&#10;- tile and tool buttons share a single listener&#10;- when there's no tool active, tile buttons are hidden" />
+    <MESSAGE value="Added Separate Page when Planting Crops&#10;&#10;- partial implementation of planting&#10;- added buttons and listeners for transition between pages&#10;- seed selection is available but non-functional&#10;- added planting success tracker in Board Class" />
+    <MESSAGE value="Add Separate Page when Planting Crops&#10;&#10;- partial implementation of planting&#10;- added buttons and listeners for transition between pages&#10;- seed selection is available but non-functional&#10;- added planting success tracker in Board Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Separate Page when Planting Crops&#10;&#10;- partial implementation of planting&#10;- added buttons and listeners for transition between pages&#10;- seed selection is available but non-functional&#10;- added planting success tracker in Board Class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
+        <breakpoint type="java-exception">
           <properties class="java.lang.NumberFormatException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
