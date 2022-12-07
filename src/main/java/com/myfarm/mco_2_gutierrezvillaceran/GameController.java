@@ -23,7 +23,6 @@ public class GameController implements Initializable {
     private GameModel gameData = new GameModel();
     private FarmerAction mode;
     private String seedName;
-    private boolean isEdge;
 
     @FXML
     private Button plantBtn;
@@ -49,9 +48,24 @@ public class GameController implements Initializable {
         gameData.addSeed("CARROT", new Plant("Carrot", "Root Crop", 3,
                 1,2,0,1,2, 1,
                 10, 9, 7.5f));
-        gameData.addSeed("APPLE", new Plant("Apple", "Fruit Tree", 10, 7, 7,
-                5, 5, 15, 10, 200,
-                5, 25));
+        gameData.addSeed("POTATO", new Plant("Potato", "Root Crop", 5,
+                3,4,1,2,10, 1,
+                20, 3, 12.5f));
+        gameData.addSeed("ROSE", new Plant("Rose", "Flower", 1,
+                1, 2, 0, 1, 1, 1,
+                5, 5, 2.5f));
+        gameData.addSeed("TULIP", new Plant("Tulip", "Flower", 2,
+                2, 3, 0, 1, 1, 1,
+                10, 9, 5));
+        gameData.addSeed("SUNFLOWER", new Plant("Sunflower", "Flower", 3,
+                2, 3, 1, 2, 1, 1,
+                20, 19, 7.5f));
+        gameData.addSeed("MANGO", new Plant("Mango", "Fruit", 10,
+                7, 7, 4, 4, 15, 5,
+                100, 8, 25));
+        gameData.addSeed("APPLE", new Plant("Apple", "Fruit Tree", 10,
+                7, 7, 5, 5, 15, 10,
+                200, 5, 25));
 
         // initialize tools
         gameData.addTool("WATER", new Tool("Watering Can", 0, 0.5f));
