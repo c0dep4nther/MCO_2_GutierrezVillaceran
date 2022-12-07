@@ -35,7 +35,7 @@
       <ButtonBar layoutX="29.0" layoutY="515.0" prefHeight="40.0" prefWidth="200.0">
         <buttons>
             <Button fx:id="plowBtn" mnemonicParsing="false" onAction="#onToolBtnClick" text="Plow" />
-            <Button fx:id="plantBtn" mnemonicParsing="false" onAction="#onPlantSeed" text="Plant" />
+            <Button fx:id="plantBtn" mnemonicParsing="false" onAction="#onPlantBtnClick" text="Plant" />
             <Button fx:id="waterBtn" mnemonicParsing="false" onAction="#onToolBtnClick" text="Water" />
             <Button fx:id="fertilizeBtn" mnemonicParsing="false" onAction="#onToolBtnClick" text="Fertilize" />
           <Button fx:id="harvestBtn" mnemonicParsing="false" onAction="#onToolBtnClick" text="Harvest" />
@@ -49,6 +49,6 @@
             <Button mnemonicParsing="false" text="Register" />
         </buttons>
       </ButtonBar>
-      <Label fx:id="report" alignment="CENTER" layoutX="162.0" layoutY="629.0" prefHeight="68.0" prefWidth="342.0" text="Game Report" textAlignment="CENTER" textOverrun="CLIP" />
+      <Label fx:id="report" alignment="CENTER" layoutX="120.0" layoutY="623.0" prefHeight="68.0" prefWidth="426.0" text="Game Report" textAlignment="CENTER" textOverrun="CLIP" />
    </children>
 </AnchorPane>

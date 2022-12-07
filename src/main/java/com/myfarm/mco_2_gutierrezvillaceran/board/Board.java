@@ -16,7 +16,12 @@ public class Board {
      */
     public Board() {
         for (int count = 1; count <= 50; count++) {
-            tiles.put(count, new Tile());
+            if (count < 6 || count > 45 || count % 5 == 0 || count % 5 == 1) {
+                tiles.put(count, new Tile(true));
+            } else {
+                tiles.put(count, new Tile(false));
+            }
+
         }
     }
 
@@ -87,6 +92,11 @@ public class Board {
      * @return access the tile value
      */
     public Tile getTile(int tileNumber) {
+        // return null if out of bounds
+        if (tileNumber > 50 || tileNumber < 1) {
+            return null;
+        }
+
         return tiles.get(tileNumber);
     }
 

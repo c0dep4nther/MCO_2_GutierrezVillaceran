@@ -59,21 +59,56 @@ public class Farmer {
         int harvestTime = seed.getHarvestTime();
         Tile farmLot = farmLand.getTile(tileNumber);
 
-        // TODO: adjust for planting trees
+        // if crop type is Fruit Tree, occupy surrounding tiles
+        if (seed.getType().equals("Fruit Tree") && farmLot.getStatus().equals(TileStatus.PLOWED)) {
+            TileStatus leftStatus = farmLand.getTile(tileNumber - 1).getStatus();
+            TileStatus rightStatus = farmLand.getTile(tileNumber + 1).getStatus();
+            TileStatus topStatus = farmLand.getTile(tileNumber - 5).getStatus();
+            TileStatus bottomStatus = farmLand.getTile(tileNumber + 5).getStatus();
+            TileStatus topLeftStatus = farmLand.getTile(tileNumber - 6).getStatus();
+            TileStatus topRightStatus = farmLand.getTile(tileNumber - 4).getStatus();
+            TileStatus bottomLeftStatus = farmLand.getTile(tileNumber + 6).getStatus();
+            TileStatus bottomRightStatus = farmLand.getTile(tileNumber + 4).getStatus();
+            boolean tileEdge = farmLot.getIsEdge();
 
-        // if tile is plowed and empty, plant seed
-        if (farmLot.getStatus() == TileStatus.PLOWED) {
+            // check if planting location is edge otherwise, check if surrounding tiles are empty
+            if (tileEdge) {
+                farmLand.setPlantSuccess(false);
+            } else if (leftStatus.equals(TileStatus.UNPLOWED)
+                    && rightStatus.equals(TileStatus.UNPLOWED)
+                    && topStatus.equals(TileStatus.UNPLOWED)
+                    && bottomStatus.equals(TileStatus.UNPLOWED)
+                    && topLeftStatus.equals(TileStatus.UNPLOWED)
+                    && topRightStatus.equals(TileStatus.UNPLOWED)
+                    && bottomLeftStatus.equals(TileStatus.UNPLOWED)
+                    && bottomRightStatus.equals(TileStatus.UNPLOWED)) {
+
+                // perform planting action
+                farmLot.setCrop(seed);
+                farmLot.setStatus(TileStatus.PLANTED);
+                farmLot.setHarvestDate(dayCount, harvestTime);
+                farmLand.setPlantSuccess(true);
+                money -= seed.getSeedCost();
+
+                // set surrounding tiles to occupied
+                farmLand.getTile(tileNumber - 1).setStatus(TileStatus.OCCUPIED);
+                farmLand.getTile(tileNumber + 1).setStatus(TileStatus.OCCUPIED);
+                farmLand.getTile(tileNumber - 5).setStatus(TileStatus.OCCUPIED);
+                farmLand.getTile(tileNumber + 5).setStatus(TileStatus.OCCUPIED);
+                farmLand.getTile(tileNumber - 6).setStatus(TileStatus.OCCUPIED);
+                farmLand.getTile(tileNumber - 4).setStatus(TileStatus.OCCUPIED);
+                farmLand.getTile(tileNumber + 6).setStatus(TileStatus.OCCUPIED);
+                farmLand.getTile(tileNumber + 4).setStatus(TileStatus.OCCUPIED);
+            }
+        // aside from Fruit Trees, all other crops are to be planted normally
+        } else if (farmLot.getStatus() == TileStatus.PLOWED) {
             farmLot.setCrop(seed);
             farmLot.setStatus(TileStatus.PLANTED);
             farmLot.setHarvestDate(dayCount, harvestTime);
             farmLand.setPlantSuccess(true);
             money -= seed.getSeedCost();
-            farmLand.getTile(tileNumber).setCrop(seed);
-            System.out.println("You planted " + seed.getName() + " which costs " + seed.getSeedCost() + " Objectcoins.");
-            System.out.println("Harvest is in " + harvestTime + " days.");
         } else {
             farmLand.setPlantSuccess(false);
-            System.out.println("You can't plant a seed on a tile that is occupied or isn't plowed.");
         }
 
         return farmLand;

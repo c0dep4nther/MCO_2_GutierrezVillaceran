@@ -8,6 +8,7 @@ public class Tile {
     private Plant crop;
     private String cropName;
     private String cropType;
+    private boolean isEdge;
     private int waterLevel;
     private int fertilizerLevel;
     private int harvestDate;
@@ -15,11 +16,12 @@ public class Tile {
     /**
      * tile constructor
      */
-    public Tile() {
+    public Tile(boolean isEdge) {
         status = TileStatus.UNPLOWED;
         crop = null;
         cropName = null;
         cropType = null;
+        this.isEdge = isEdge;
         waterLevel = 0;
         fertilizerLevel = 0;
     }
@@ -72,6 +74,10 @@ public class Tile {
      */
     public int getFertilizerLevel() {
         return fertilizerLevel;
+    }
+
+    public boolean getIsEdge() {
+        return isEdge;
     }
 
     // setters

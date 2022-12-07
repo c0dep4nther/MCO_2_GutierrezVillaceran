@@ -23,6 +23,7 @@ public class GameController implements Initializable {
     private GameModel gameData = new GameModel();
     private FarmerAction mode;
     private String seedName;
+    private boolean isEdge;
 
     @FXML
     private Button plantBtn;
@@ -48,6 +49,9 @@ public class GameController implements Initializable {
         gameData.addSeed("CARROT", new Plant("Carrot", "Root Crop", 3,
                 1,2,0,1,2, 1,
                 10, 9, 7.5f));
+        gameData.addSeed("APPLE", new Plant("Apple", "Fruit Tree", 10, 7, 7,
+                5, 5, 15, 10, 200,
+                5, 25));
 
         // initialize tools
         gameData.addTool("WATER", new Tool("Watering Can", 0, 0.5f));
@@ -92,6 +96,7 @@ public class GameController implements Initializable {
         String tempTileID = ((Button) event.getSource())
                 .getText()
                 .substring(5);
+        int harvestTime;
         int tileID = Integer.parseInt(tempTileID);
 
         switch (mode) {
@@ -103,13 +108,18 @@ public class GameController implements Initializable {
             case PLANT -> {
                 gameData.plantSeed(seedName, tileID);
                 boolean plantSuccess = gameData.getPlantSuccess();
+                int seedCost = gameData.getSeedCost(seedName);
 
                 if (plantSuccess) {
+                    harvestTime = gameData.getHarvestTime(tileID);
+
                     report.setText("You planted " + seedName.toLowerCase() +
-                            " on tile " + tileID + ".");
+                            " on tile " + tileID + " which costs " + seedCost + " Objectcoins.\n"
+                            + "Harvest is in " + harvestTime + " days.");
                 } else {
                     report.setText("You failed to plant " + seedName.toLowerCase() +
-                            " on tile " + tileID + ". \nMake sure the tile is plowed or unoccupied.");
+                            " on tile " + tileID + ". Make sure the tile is plowed \nand unoccupied. " +
+                            "If it's a tree, make sure it's not on the edge of the farm.");
                 }
 
                 toggleTile(false);
@@ -124,7 +134,13 @@ public class GameController implements Initializable {
         updateGameInfo();
     }
 
-    public void onPlantSeed(ActionEvent event) throws IOException {
+//    public void onSleepBtnClick(ActionEvent event) {
+//        gameData.nextDay();
+//        updateGameInfo();
+//        report.setText("You slept for a day.");
+//    }
+
+    public void onPlantBtnClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plant-view.fxml"));
         Stage stage;
         Scene scene;
