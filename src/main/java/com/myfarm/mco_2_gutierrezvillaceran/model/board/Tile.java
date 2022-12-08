@@ -1,14 +1,14 @@
-package com.myfarm.mco_2_gutierrezvillaceran.board;
+package com.myfarm.mco_2_gutierrezvillaceran.model.board;
 
-import com.myfarm.mco_2_gutierrezvillaceran.Plant;
-import com.myfarm.mco_2_gutierrezvillaceran.TileStatus;
+import com.myfarm.mco_2_gutierrezvillaceran.model.Plant;
+import com.myfarm.mco_2_gutierrezvillaceran.model.TileStatus;
 
 public class Tile {
     private TileStatus status;
     private Plant crop;
     private String cropName;
     private String cropType;
-    private boolean isEdge;
+    private final boolean isEdge;
     private int waterLevel;
     private int fertilizerLevel;
     private int harvestDate;
@@ -24,6 +24,23 @@ public class Tile {
         this.isEdge = isEdge;
         waterLevel = 0;
         fertilizerLevel = 0;
+    }
+
+    public void addWaterLevel() {
+        waterLevel++;
+    }
+
+    public void resetTile() {
+        status = TileStatus.UNPLOWED;
+        crop = null;
+        cropName = null;
+        cropType = null;
+        waterLevel = 0;
+        fertilizerLevel = 0;
+    }
+
+    public void addFertilizerLevel() {
+        fertilizerLevel++;
     }
 
     // getters
@@ -88,17 +105,6 @@ public class Tile {
      */
     public void setStatus(TileStatus status) {
         this.status = status;
-    }
-
-    /**
-     *
-     * @param waterLevel amount of water applied
-     */
-    public void setWaterLevel(int waterLevel) {
-        if (crop == null){
-            return;
-        }
-        this.waterLevel = waterLevel;
     }
 
     /**

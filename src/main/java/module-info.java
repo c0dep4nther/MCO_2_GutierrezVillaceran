@@ -4,6 +4,9 @@ module com.myfarm.mco_2_gutierrezvillaceran {
 
 
     opens com.myfarm.mco_2_gutierrezvillaceran to javafx.fxml;
-    exports com.myfarm.mco_2_gutierrezvillaceran.board;
+    exports com.myfarm.mco_2_gutierrezvillaceran.model;
+    opens com.myfarm.mco_2_gutierrezvillaceran.model to javafx.fxml;
+    exports com.myfarm.mco_2_gutierrezvillaceran.model.board;
+    opens com.myfarm.mco_2_gutierrezvillaceran.model.board to javafx.fxml;
     exports com.myfarm.mco_2_gutierrezvillaceran;
 }

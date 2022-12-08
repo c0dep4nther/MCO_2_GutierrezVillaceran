@@ -1,7 +1,11 @@
 package com.myfarm.mco_2_gutierrezvillaceran;
 
-import com.myfarm.mco_2_gutierrezvillaceran.board.Board;
-import com.myfarm.mco_2_gutierrezvillaceran.board.Tile;
+import com.myfarm.mco_2_gutierrezvillaceran.model.Farmer;
+import com.myfarm.mco_2_gutierrezvillaceran.model.Plant;
+import com.myfarm.mco_2_gutierrezvillaceran.model.TileStatus;
+import com.myfarm.mco_2_gutierrezvillaceran.model.Tool;
+import com.myfarm.mco_2_gutierrezvillaceran.model.board.Board;
+import com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile;
 
 import java.util.HashMap;
 

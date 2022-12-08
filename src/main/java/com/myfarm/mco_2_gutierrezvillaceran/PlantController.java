@@ -1,5 +1,6 @@
 package com.myfarm.mco_2_gutierrezvillaceran;
 
+import com.myfarm.mco_2_gutierrezvillaceran.model.FarmerAction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

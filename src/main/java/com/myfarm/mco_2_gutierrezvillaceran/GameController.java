@@ -1,5 +1,6 @@
 package com.myfarm.mco_2_gutierrezvillaceran;
 
+import com.myfarm.mco_2_gutierrezvillaceran.model.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,6 +71,8 @@ public class GameController implements Initializable {
         // initialize tools
         gameData.addTool("WATER", new Tool("Watering Can", 0, 0.5f));
         gameData.addTool("PLOW", new Tool("Plow", 0, 0.5f));
+        gameData.addTool("FERTILIZER", new Tool("Fertilizer", 10, 4));
+        gameData.addTool("SHOVEL", new Tool("Shovel", 7, 2));
         report.setText("");
 
         gridInit();
@@ -116,7 +119,14 @@ public class GameController implements Initializable {
         switch (mode) {
             case PLOW -> {
                 gameData.activeTool("PLOW", tileID);
-                report.setText("You plowed tile " + tileID + ".");
+
+                // only plow if the tile is not plowed
+                if (gameData.getTile(tileID).getStatus() == TileStatus.UNPLOWED) {
+                    report.setText("Tile " + tileID + " is now plowed.");
+                } else {
+                    report.setText("Can't plow tile " + tileID + ".");
+                }
+
                 toggleTile(false);
             }
             case PLANT -> {
@@ -140,7 +150,32 @@ public class GameController implements Initializable {
             }
             case WATER -> {
                 gameData.activeTool("WATER", tileID);
-                report.setText("You watered tile " + tileID + ".");
+
+                // only water if a crop exists
+                if (gameData.getTile(tileID).getStatus() == TileStatus.PLANTED) {
+                    report.setText("Tile " + tileID + " is now watered.");
+                } else {
+                    report.setText("Can't water tile " + tileID + ".");
+                }
+
+                toggleTile(false);
+            }
+            case FERTILIZE -> {
+                gameData.activeTool("FERTILIZER", tileID);
+
+                // only fertilize if a crop exists
+                if (gameData.getTile(tileID).getStatus() == TileStatus.PLANTED) {
+                    report.setText("Tile " + tileID + " is now fertilized.");
+                } else {
+                    report.setText("Can't fertilize tile " + tileID + ".");
+                }
+
+                toggleTile(false);
+            }
+            case SHOVEL -> {
+                gameData.activeTool("SHOVEL", tileID);
+
+                report.setText("You used a shovel on tile " + tileID + ".");
                 toggleTile(false);
             }
         }
@@ -148,11 +183,12 @@ public class GameController implements Initializable {
         updateGameInfo();
     }
 
-//    public void onSleepBtnClick(ActionEvent event) {
-//        gameData.nextDay();
-//        updateGameInfo();
-//        report.setText("You slept for a day.");
-//    }
+    public void onSleepBtnClick() {
+        gameData.endDay();
+        updateGameInfo();
+        toggleTile(false);
+        report.setText("You slept for a day.");
+    }
 
     public void onPlantBtnClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plant-view.fxml"));

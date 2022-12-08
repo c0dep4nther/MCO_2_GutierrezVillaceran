@@ -4,9 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="Add Tree Planting Feature&#10;&#10;- new OCCUPIED enum value for tree tile coverage&#10;- new boolean variable to check if tile is edge of farm&#10;- non-functional implementation of sleep event listener&#10;-">
+    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="Add New Tools for Farming&#10;&#10;- restructured project files for easy viewing&#10;- Shovel and Fertilizer now functional&#10;- refactor toolAction method to check first for tile status&#10;- pickaxe to be included once rocks are implemented">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/Tool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/Farmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/Farmer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/FarmerAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/FarmerAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/FarmerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/FarmerType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/PlantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/PlantController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/RegisterFarmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/RegisterFarmer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/TileStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/TileStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/Tool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/board/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/board/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +95,20 @@
       <recent name="com.myfarm.mco_2_gutierrezvillaceran" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GameApplication">
+    <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.myfarm.mco_2_gutierrezvillaceran.GameApplication" />
+      <module name="MCO_2_GutierrezVillaceran.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.myfarm.mco_2_gutierrezvillaceran.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -103,6 +130,11 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GameApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -176,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670408673390</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Accomplish Seed Menu&#10;&#10;- all seed choices added">
+      <created>1670415714544</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670415714544</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -201,7 +240,9 @@
     <MESSAGE value="Add Separate Page when Planting Crops&#10;&#10;- partial implementation of planting&#10;- added buttons and listeners for transition between pages&#10;- seed selection is available but non-functional&#10;- added planting success tracker in Board Class" />
     <MESSAGE value="Partial Planting Implemented&#10;&#10;- planting crops now possible.&#10;- fixed issue on data sync between controllers.&#10;- other crops to follow.&#10;- pending implementation of logic when trees are selected." />
     <MESSAGE value="Add Tree Planting Feature&#10;&#10;- new OCCUPIED enum value for tree tile coverage&#10;- new boolean variable to check if tile is edge of farm&#10;- non-functional implementation of sleep event listener&#10;-" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Tree Planting Feature&#10;&#10;- new OCCUPIED enum value for tree tile coverage&#10;- new boolean variable to check if tile is edge of farm&#10;- non-functional implementation of sleep event listener&#10;-" />
+    <MESSAGE value="Accomplish Seed Menu&#10;&#10;- all seed choices added" />
+    <MESSAGE value="Add New Tools for Farming&#10;&#10;- restructured project files for easy viewing&#10;- Shovel and Fertilizer now functional&#10;- refactor toolAction method to check first for tile status&#10;- pickaxe to be included once rocks are implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add New Tools for Farming&#10;&#10;- restructured project files for easy viewing&#10;- Shovel and Fertilizer now functional&#10;- refactor toolAction method to check first for tile status&#10;- pickaxe to be included once rocks are implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

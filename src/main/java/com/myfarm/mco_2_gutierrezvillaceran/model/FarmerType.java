@@ -1,4 +1,4 @@
-package com.myfarm.mco_2_gutierrezvillaceran;
+package com.myfarm.mco_2_gutierrezvillaceran.model;
 
 public enum FarmerType {
     /**

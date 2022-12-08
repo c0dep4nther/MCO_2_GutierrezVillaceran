@@ -1,9 +1,8 @@
-package com.myfarm.mco_2_gutierrezvillaceran.board;
+package com.myfarm.mco_2_gutierrezvillaceran.model.board;
 
-import com.myfarm.mco_2_gutierrezvillaceran.TileStatus;
+import com.myfarm.mco_2_gutierrezvillaceran.model.TileStatus;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Board {
     // use hashmap to store integer as key and then tile as value
@@ -17,9 +16,9 @@ public class Board {
     public Board() {
         for (int count = 1; count <= 50; count++) {
             if (count < 6 || count > 45 || count % 5 == 0 || count % 5 == 1) {
-                tiles.put(count, new Tile(true));
+                tiles.put(count, new com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile(true));
             } else {
-                tiles.put(count, new Tile(false));
+                tiles.put(count, new com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile(false));
             }
 
         }
@@ -29,7 +28,6 @@ public class Board {
      * checks if plant has withered or can be harvested
      */
     public void endDay() {
-        Scanner input = new Scanner(System.in);
         boolean wither = false;
         int fertilizerNeed;
         int fertilizerLevel;
@@ -38,7 +36,7 @@ public class Board {
         int waterLevel;
         int witherCount = 0;
         TileStatus cropStatus;
-        Tile farmLot;
+        com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile farmLot;
 
         // increment day
         dayCount++;
@@ -82,16 +80,13 @@ public class Board {
                 System.out.println(witherCount + " crops have withered.");
             }
         }
-        System.out.println("Press enter to continue.");
-        input.nextLine();
-        input.nextLine();
     }
 
     /**
      * @param tileNumber number of tile
      * @return access the tile value
      */
-    public Tile getTile(int tileNumber) {
+    public com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile getTile(int tileNumber) {
         // return null if out of bounds
         if (tileNumber > 50 || tileNumber < 1) {
             return null;

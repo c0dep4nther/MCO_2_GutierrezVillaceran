@@ -1,7 +1,7 @@
-package com.myfarm.mco_2_gutierrezvillaceran;
+package com.myfarm.mco_2_gutierrezvillaceran.model;
 
-import com.myfarm.mco_2_gutierrezvillaceran.board.Board;
-import com.myfarm.mco_2_gutierrezvillaceran.board.Tile;
+import com.myfarm.mco_2_gutierrezvillaceran.model.board.Board;
+import com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -36,10 +36,17 @@ public class Farmer {
      */
     public Board useTool(Tool item, Board farmLand, int tileNumber) {
         Tile farmLot;
+        boolean success;
 
         farmLot = farmLand.getTile(tileNumber);
         item.toolAction(farmLot);
-        exp += item.getExpGain();
+
+        success = item.getActionSuccess();
+
+        if (success) {
+            exp += item.getExpGain();
+            money -= item.getCost();
+        }
 
         // set status to board
         farmLand.getTile(tileNumber).setStatus(farmLot.getStatus());
