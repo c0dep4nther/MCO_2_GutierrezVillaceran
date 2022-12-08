@@ -30,6 +30,8 @@ public class GameController implements Initializable {
     @FXML
     private Label gameInfo;
     @FXML
+    private Label registerInfo;
+    @FXML
     private Label report;
     @FXML
     private GridPane farmGrid;
@@ -61,7 +63,7 @@ public class GameController implements Initializable {
         gameData.addSeed("SUNFLOWER", new Plant("Sunflower", "Flower", 3,
                 2, 3, 1, 2, 1, 1,
                 20, 19, 7.5f));
-        gameData.addSeed("MANGO", new Plant("Mango", "Fruit", 10,
+        gameData.addSeed("MANGO", new Plant("Mango", "Fruit Tree", 10,
                 7, 7, 4, 4, 15, 5,
                 100, 8, 25));
         gameData.addSeed("APPLE", new Plant("Apple", "Fruit Tree", 10,
@@ -79,6 +81,10 @@ public class GameController implements Initializable {
         toggleTile(false);
     }
 
+//    public void updateRegisterInfo() {
+//        registerInfo.setText("Register Type: " + registerInfo);
+//    }
+
     public void updateGameInfo() {
         int currentDay = gameData.getDayCount();
         int playerLevel = gameData.getLevel();
@@ -90,7 +96,7 @@ public class GameController implements Initializable {
     }
 
 //        TODO: Implement Tools and Planting Features
-    public void onToolBtnClick(ActionEvent event) {
+    public void onToolClick(ActionEvent event) {
         String tool = ((Button) event.getSource())
                 .getText()
                 .toLowerCase();
@@ -103,13 +109,14 @@ public class GameController implements Initializable {
             case "plow" -> mode = FarmerAction.PLOW;
             case "shovel" -> mode = FarmerAction.SHOVEL;
             case "pickaxe" -> mode = FarmerAction.PICKAXE;
+            case "fertilizer" -> mode = FarmerAction.FERTILIZER;
         }
 
         report.setText("You are in " + tool + " mode." +
                 "\nPlease Select a tile.");
     }
 
-    public void onTileBtnClick(ActionEvent event) {
+    public void onTileClick(ActionEvent event) {
         String tempTileID = ((Button) event.getSource())
                 .getText()
                 .substring(5);
@@ -121,7 +128,7 @@ public class GameController implements Initializable {
                 gameData.activeTool("PLOW", tileID);
 
                 // only plow if the tile is not plowed
-                if (gameData.getTile(tileID).getStatus() == TileStatus.UNPLOWED) {
+                if (gameData.getTile(tileID).getStatus() == TileStatus.PLOWED) {
                     report.setText("Tile " + tileID + " is now plowed.");
                 } else {
                     report.setText("Can't plow tile " + tileID + ".");
@@ -160,7 +167,7 @@ public class GameController implements Initializable {
 
                 toggleTile(false);
             }
-            case FERTILIZE -> {
+            case FERTILIZER -> {
                 gameData.activeTool("FERTILIZER", tileID);
 
                 // only fertilize if a crop exists
@@ -168,6 +175,21 @@ public class GameController implements Initializable {
                     report.setText("Tile " + tileID + " is now fertilized.");
                 } else {
                     report.setText("Can't fertilize tile " + tileID + ".");
+                }
+
+                toggleTile(false);
+            }
+            case HARVEST -> {
+                gameData.harvest(tileID);
+                boolean harvestSuccess = gameData.getHarvestSuccess();
+                float harvestMoney = gameData.getHarvestGain();
+
+                if (harvestSuccess) {
+                    report.setText("You harvested " + gameData.getCropName(tileID)
+                            + " on tile " + tileID + " and earned " + harvestMoney
+                            + " Objectcoins.");
+                } else {
+                    report.setText("Can't harvest tile " + tileID + ".");
                 }
 
                 toggleTile(false);
@@ -183,14 +205,14 @@ public class GameController implements Initializable {
         updateGameInfo();
     }
 
-    public void onSleepBtnClick() {
+    public void onSleepClick() {
         gameData.endDay();
         updateGameInfo();
         toggleTile(false);
         report.setText("You slept for a day.");
     }
 
-    public void onPlantBtnClick(ActionEvent event) throws IOException {
+    public void onPlantClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plant-view.fxml"));
         Stage stage;
         Scene scene;
@@ -261,7 +283,7 @@ public class GameController implements Initializable {
                 tileBtn = new Button();
                 tileBtn.setText("Tile " + count);
                 tileBtn.setId("tile" + count);
-                tileBtn.setOnAction(this::onTileBtnClick);
+                tileBtn.setOnAction(this::onTileClick);
                 tileBtn.setVisible(false);
                 farmGrid.add(tileBtn, column, row);
 

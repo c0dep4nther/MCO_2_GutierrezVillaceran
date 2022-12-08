@@ -4,5 +4,5 @@ public enum TileStatus {
     /**
      * enumerates tile status
      */
-    UNPLOWED, PLOWED, PLANTED, WITHERED, HARVESTABLE, OCCUPIED
+    UNPLOWED, PLOWED, PLANTED, WITHERED, HARVESTABLE, ROCK
 }

@@ -37,6 +37,10 @@ public class GameModel {
         farmLand.endDay();
     }
 
+    public void harvest(int tileID) {
+        farmLand = player.harvestPlant(farmLand, tileID);
+    }
+
     // getters
     public boolean getPlantSuccess() {
         return farmLand.getPlantSuccess();
@@ -55,7 +59,7 @@ public class GameModel {
     }
 
     public float getExp() {
-        return player.getTotalExp();
+        return player.getExp();
     }
 
     public Tile getTile(int tileID) {
@@ -70,11 +74,19 @@ public class GameModel {
         return farmLand.getTile(tileID).getCrop().getHarvestTime();
     }
 
-    public int getHarvestDate(int tileID) {
-        return farmLand.getTile(tileID).getHarvestDate();
-    }
-
     public int getSeedCost(String seedID) {
         return seedList.get(seedID).getSeedCost();
+    }
+
+    public boolean getHarvestSuccess() {
+        return farmLand.getHarvestSuccess();
+    }
+
+    public float getHarvestGain() {
+        return farmLand.getHarvestGain();
+    }
+
+    public String getCropName(int tileID) {
+        return farmLand.getTile(tileID).getCropName();
     }
 }

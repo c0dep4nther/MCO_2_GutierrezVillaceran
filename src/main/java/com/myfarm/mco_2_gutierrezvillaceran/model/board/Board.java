@@ -7,7 +7,9 @@ import java.util.HashMap;
 public class Board {
     // use hashmap to store integer as key and then tile as value
     private final HashMap<Integer, Tile> tiles = new HashMap<>();
-    private boolean plantSuccess = false;
+    private boolean plantSuccess;
+    private boolean harvestSuccess;
+    private float harvestGain;
     private int dayCount = 1;
 
     /**
@@ -16,9 +18,9 @@ public class Board {
     public Board() {
         for (int count = 1; count <= 50; count++) {
             if (count < 6 || count > 45 || count % 5 == 0 || count % 5 == 1) {
-                tiles.put(count, new com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile(true));
+                tiles.put(count, new Tile(true));
             } else {
-                tiles.put(count, new com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile(false));
+                tiles.put(count, new Tile(false));
             }
 
         }
@@ -36,7 +38,7 @@ public class Board {
         int waterLevel;
         int witherCount = 0;
         TileStatus cropStatus;
-        com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile farmLot;
+        Tile farmLot;
 
         // increment day
         dayCount++;
@@ -86,7 +88,7 @@ public class Board {
      * @param tileNumber number of tile
      * @return access the tile value
      */
-    public com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile getTile(int tileNumber) {
+    public Tile getTile(int tileNumber) {
         // return null if out of bounds
         if (tileNumber > 50 || tileNumber < 1) {
             return null;
@@ -134,8 +136,24 @@ public class Board {
         return plantSuccess;
     }
 
+    public boolean getHarvestSuccess() {
+        return harvestSuccess;
+    }
+
+    public float getHarvestGain() {
+        return harvestGain;
+    }
+
     // setters
     public void setPlantSuccess(boolean plantSuccess) {
         this.plantSuccess = plantSuccess;
+    }
+
+    public void setHarvestSuccess(boolean harvestSuccess) {
+        this.harvestSuccess = harvestSuccess;
+    }
+
+    public void setHarvestGain(float harvestGain) {
+        this.harvestGain = harvestGain;
     }
 }
