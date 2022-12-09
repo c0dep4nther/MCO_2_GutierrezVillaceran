@@ -22,7 +22,6 @@ public class Board {
             } else {
                 tiles.put(count, new Tile(false));
             }
-
         }
     }
 

@@ -30,7 +30,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
     </GridPane>
-    <Label fx:id="gameInfo" alignment="CENTER" layoutX="242.0" layoutY="7.0" prefHeight="68.0" prefWidth="182.0" text="Player Details" textOverrun="CLIP" />
+    <Label fx:id="gameInfo" alignment="CENTER" layoutX="216.0" layoutY="7.0" prefHeight="68.0" prefWidth="236.0" text="Player Details" textOverrun="CLIP" />
     <ButtonBar layoutX="29.0" layoutY="515.0" prefHeight="40.0" prefWidth="200.0">
       <buttons>
           <Button mnemonicParsing="false" onAction="#onToolClick" text="Plow" />
@@ -45,7 +45,7 @@
     <ButtonBar layoutX="242.0" layoutY="568.0" prefHeight="40.0" prefWidth="180.0">
       <buttons>
           <Button mnemonicParsing="false" onAction="#onSleepClick" text="Sleep" />
-          <Button mnemonicParsing="false" text="Register" />
+          <Button mnemonicParsing="false" onAction="#onRegisterClick" text="Register" />
       </buttons>
     </ButtonBar>
     <Label fx:id="report" alignment="CENTER" layoutX="120.0" layoutY="623.0" prefHeight="68.0" prefWidth="426.0" text="Game Report" textAlignment="CENTER" textOverrun="CLIP" />

@@ -13,7 +13,7 @@ public enum FarmerType {
     DISTINGUISHED("Distinguished Farmer",10,2,
             -2,1,0,
             300),
-    LEGENDARY("Honorable Farmer",15,4,
+    LEGENDARY("Legendary Farmer",15,4,
             -3,2,1,
             400);
 
@@ -24,7 +24,7 @@ public enum FarmerType {
     private final int seedDiscount;
     private final int waterBL;
     private final int fertilizerBL;
-    private final int registrationFee;
+    private final int registerFee;
 
     /**
      *
@@ -34,18 +34,18 @@ public enum FarmerType {
      * @param seedDiscount seed discount
      * @param waterBL water bonus limit
      * @param fertilizerBL fertilizer bonus limit
-     * @param registrationFee registration fee
+     * @param registerFee registration fee
      */
     FarmerType(String farmerType, int levelRequirement, int bonusEarn,
                int seedDiscount, int waterBL, int fertilizerBL,
-               int registrationFee) {
+               int registerFee) {
         this.farmerType = farmerType;
         this.levelRequirement = levelRequirement;
         this.bonusEarn = bonusEarn;
         this.seedDiscount = seedDiscount;
         this.waterBL = waterBL;
         this.fertilizerBL = fertilizerBL;
-        this.registrationFee = registrationFee;
+        this.registerFee = registerFee;
     }
 
     /**
@@ -60,7 +60,7 @@ public enum FarmerType {
      *
      * @return level requirement
      */
-    public int getLevelRequirement() {
+    public int getLvlRequirement() {
         return levelRequirement;
     }
 
@@ -84,8 +84,8 @@ public enum FarmerType {
      *
      * @return registration fee
      */
-    public int getRegistrationFee() {
-        return registrationFee;
+    public int getRegisterFee() {
+        return registerFee;
     }
 
     /**

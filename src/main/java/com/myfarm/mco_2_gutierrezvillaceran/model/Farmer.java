@@ -6,7 +6,8 @@ import com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile;
 import java.util.Objects;
 
 public class Farmer {
-    private FarmerType type = FarmerType.FARMER;
+    private FarmerType register = FarmerType.FARMER;
+    private boolean registerSuccess;
     private float exp = 0;
     private float money = 100;
     private int level = 1;
@@ -20,6 +21,30 @@ public class Farmer {
             level++;
             exp -= 100;
             System.out.println("You leveled up to level " + level + "!");
+        }
+    }
+
+    public void registerFarmer() {
+        // reset success tracker
+        registerSuccess = false;
+
+        // loop through farmer type fee
+        for (FarmerType type : FarmerType.values()) {
+            int fee = type.getRegisterFee();
+            int lvlReq = type.getLvlRequirement();
+
+            // if type ahead of farmer type, register
+            if (type.ordinal() > register.ordinal()) {
+                // check if farmer has enough money
+                // and meets level requirement
+                if (money >= fee && level >= lvlReq) {
+                    register = type;
+                    money -= fee;
+                    registerSuccess = true;
+
+                    break;
+                }
+            }
         }
     }
 
@@ -93,7 +118,7 @@ public class Farmer {
                     farmLot.setStatus(TileStatus.PLANTED);
                     farmLot.setHarvestDate(dayCount, harvestTime);
                     farmLand.setPlantSuccess(true);
-                    money -= seed.getSeedCost();
+                    money -= seed.getSeedCost() + register.getSeedDiscount();
                 }
             }
         // aside from Fruit Trees, all other crops are to be planted normally
@@ -102,7 +127,7 @@ public class Farmer {
             farmLot.setStatus(TileStatus.PLANTED);
             farmLot.setHarvestDate(dayCount, harvestTime);
             farmLand.setPlantSuccess(true);
-            money -= seed.getSeedCost();
+            money -= (seed.getSeedCost() + register.getSeedDiscount());
         }
 
         return farmLand;
@@ -120,10 +145,10 @@ public class Farmer {
         String cropType = farmLot.getCrop().getType();
         int waterLevel = farmLot.getWaterLevel();
         int waterBL = farmLot.getCrop().getWaterBL() +
-                type.getWaterBL();
+                register.getWaterBL();
         int fertilizerLevel = farmLot.getFertilizerLevel();
         int fertilizerBL = farmLot.getCrop().getFertilizerBL() +
-                type.getFertilizerBL();
+                register.getFertilizerBL();
         int maxProduce = farmLot.getCrop().getMaxProduce();
         int minProduce = farmLot.getCrop().getMinProduce();
         int totalProduce;
@@ -150,7 +175,7 @@ public class Farmer {
             totalProduce = (int) (Math.random() *
                     (maxProduce - minProduce + 1) + minProduce);
 
-            harvestTotal = totalProduce * (sellPrice + type.getBonusEarn());
+            harvestTotal = totalProduce * (sellPrice + register.getBonusEarn());
             waterBonus = (float) (0.2 * (waterLevel - 1));
             fertilizerBonus = harvestTotal * (float) (0.5 * fertilizerLevel);
             finalPrice = harvestTotal + waterBonus + fertilizerBonus;
@@ -209,5 +234,17 @@ public class Farmer {
      */
     public int getLevel() {
         return level;
+    }
+
+    public String getRegisterType() {
+        return register.getFarmerType();
+    }
+
+    public boolean getRegisterSuccess() {
+        return registerSuccess;
+    }
+
+    public FarmerType getRegister() {
+        return register;
     }
 }

@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class GameModel {
     private Board farmLand = new Board();
-    private Farmer player = new Farmer();
+    private final Farmer player = new Farmer();
     private final HashMap<String, Plant> seedList = new HashMap<>();
     public final HashMap<String, Tool> toolInventory = new HashMap<>();
 
@@ -39,6 +39,10 @@ public class GameModel {
 
     public void harvest(int tileID) {
         farmLand = player.harvestPlant(farmLand, tileID);
+    }
+
+    public void register() {
+        player.registerFarmer();
     }
 
     // getters
@@ -75,7 +79,9 @@ public class GameModel {
     }
 
     public int getSeedCost(String seedID) {
-        return seedList.get(seedID).getSeedCost();
+        int seedDiscount = player.getRegister().getSeedDiscount();
+
+        return seedList.get(seedID).getSeedCost() + seedDiscount;
     }
 
     public boolean getHarvestSuccess() {
@@ -89,5 +95,14 @@ public class GameModel {
     public String getCropName(int tileID) {
         return farmLand.getTile(tileID).getCropName();
     }
+
+    public String getRegisterType() {
+        return player.getRegisterType();
+    }
+
+    public boolean getRegisterSuccess() {
+        return player.getRegisterSuccess();
+    }
+
     public int getWitherCount(){return farmLand.countWither();}
 }

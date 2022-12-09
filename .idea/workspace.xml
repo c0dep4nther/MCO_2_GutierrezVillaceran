@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="Add New Tools for Farming&#10;&#10;- restructured project files for easy viewing&#10;- Shovel and Fertilizer now functional&#10;- refactor toolAction method to check first for tile status&#10;- pickaxe to be included once rocks are implemented">
+    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="Implement Harvest Feature&#10;&#10;- removed total exp computation for leveling system&#10;- each success for player actions will now reset to false&#10;- when trees are planted, planting crops beside it is possible&#10;- register info is added but non-functional">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/Farmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/Farmer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/FarmerAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/FarmerAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/TileStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/TileStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/FarmerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/FarmerType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/RegisterFarmer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/board/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" afterDir="false" />
     </list>
@@ -214,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670497374593</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Implement Harvest Feature&#10;&#10;- removed total exp computation for leveling system&#10;- each success for player actions will now reset to false&#10;- when trees are planted, planting crops beside it is possible&#10;- register info is added but non-functional">
+      <created>1670517575538</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670517575538</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,7 +248,9 @@
     <MESSAGE value="Add Tree Planting Feature&#10;&#10;- new OCCUPIED enum value for tree tile coverage&#10;- new boolean variable to check if tile is edge of farm&#10;- non-functional implementation of sleep event listener&#10;-" />
     <MESSAGE value="Accomplish Seed Menu&#10;&#10;- all seed choices added" />
     <MESSAGE value="Add New Tools for Farming&#10;&#10;- restructured project files for easy viewing&#10;- Shovel and Fertilizer now functional&#10;- refactor toolAction method to check first for tile status&#10;- pickaxe to be included once rocks are implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add New Tools for Farming&#10;&#10;- restructured project files for easy viewing&#10;- Shovel and Fertilizer now functional&#10;- refactor toolAction method to check first for tile status&#10;- pickaxe to be included once rocks are implemented" />
+    <MESSAGE value="Implement Harvest Feature&#10;&#10;- removed total exp computation for leveling system&#10;- each success for player actions will now reset to false&#10;- when trees are planted, planting crops beside it is possible" />
+    <MESSAGE value="Implement Harvest Feature&#10;&#10;- removed total exp computation for leveling system&#10;- each success for player actions will now reset to false&#10;- when trees are planted, planting crops beside it is possible&#10;- register info is added but non-functional" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement Harvest Feature&#10;&#10;- removed total exp computation for leveling system&#10;- each success for player actions will now reset to false&#10;- when trees are planted, planting crops beside it is possible&#10;- register info is added but non-functional" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -254,15 +263,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="26" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/Farmer.java</url>
-          <line>16</line>
-          <properties class="com.myfarm.mco_2_gutierrezvillaceran.model.Farmer" method="levelUp">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

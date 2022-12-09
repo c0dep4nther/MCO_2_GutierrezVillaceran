@@ -24,6 +24,7 @@ public class GameController implements Initializable {
     private GameModel gameData = new GameModel();
     private FarmerAction mode;
     private String seedName;
+    private String registerType;
 
     @FXML
     private Button plantBtn;
@@ -41,8 +42,13 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // set the game info asynchronously
-        Platform.runLater(this::updateGameInfo);
+        // set the game data asynchronously
+        Platform.runLater(() -> {
+            registerType = gameData.getRegisterType();
+
+            updateGameInfo();
+            updateRegisterInfo();
+        });
 
         // initialize seeds
         gameData.addSeed("TURNIP", new Plant("Turnip", "Root Crop", 2,
@@ -81,9 +87,9 @@ public class GameController implements Initializable {
         toggleTile(false);
     }
 
-//    public void updateRegisterInfo() {
-//        registerInfo.setText("Register Type: " + registerInfo);
-//    }
+    public void updateRegisterInfo() {
+        registerInfo.setText("Register Type: " + registerType);
+    }
 
     public void updateGameInfo() {
         int currentDay = gameData.getDayCount();
@@ -95,7 +101,10 @@ public class GameController implements Initializable {
                 "\nLevel: " + playerLevel + "\t\t\tExp: " + playerExp);
     }
 
-//        TODO: Implement Tools and Planting Features
+//        TODO: Implement Rocked Tile and Pickaxe Tool
+//        TODO: Implement game end conditions
+//        TODO: Protect money from negative values (e.g. when buying seeds)
+//        TODO: Implement Proper Spending of Money (e.g. using shovels)
     public void onToolClick(ActionEvent event) {
         String tool = ((Button) event.getSource())
                 .getText()
@@ -213,6 +222,24 @@ public class GameController implements Initializable {
         updateGameInfo();
     }
 
+    public void onRegisterClick() {
+        boolean registerSuccess;
+
+        gameData.register();
+        registerSuccess = gameData.getRegisterSuccess();
+
+        if (registerSuccess) {
+            registerType = gameData.getRegisterType();
+            updateGameInfo();
+            updateRegisterInfo();
+            report.setText("You have successfully become a " + registerType + ".");
+        } else if (registerType.equals("Legendary Farmer")) {
+            report.setText("You have reached the max farmer rank.");
+        } else {
+            report.setText("You can't register to the next farmer rank yet.");
+        }
+    }
+
     public void onSleepClick() {
         gameData.endDay();
         updateGameInfo();
@@ -248,6 +275,8 @@ public class GameController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    // gameover()
 
     public void toggleTile(boolean toggle) {
         String cropName;
