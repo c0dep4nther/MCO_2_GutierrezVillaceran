@@ -148,9 +148,17 @@ public class GameController implements Initializable {
                             " on tile " + tileID + " which costs " + seedCost + " Objectcoins.\n"
                             + "Harvest is in " + harvestTime + " days.");
                 } else {
-                    report.setText("You failed to plant " + seedName.toLowerCase() +
-                            " on tile " + tileID + ". Make sure the tile is plowed \nand unoccupied. " +
-                            "If it's a tree, make sure it's not on the edge of the farm. \n Otherwise, check if you have enough money");
+                    if(gameData.getWitherCount()==50&&gameData.getMoney()==0){
+                        report.setText("You do not have enough money or any tiles left to plant on." +
+                                "\nClick new game!");
+                    }
+                    else{
+                        report.setText("You failed to plant " + seedName.toLowerCase() +
+                                " on tile " + tileID + ". Make sure the tile is plowed \nand unoccupied. " +
+                                "If it's a tree, make sure it's not on the edge of the farm.\n " +
+                                "Otherwise, check if you have enough money.");
+                    }
+
                 }
 
                 toggleTile(false);
@@ -224,6 +232,17 @@ public class GameController implements Initializable {
         plantController.setGameData(gameData);
 
         // load plant view
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void onNewGame(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("endgame-view.fxml"));
+        Stage stage;
+        Scene scene;
+        Parent root = loader.load();
+
         stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

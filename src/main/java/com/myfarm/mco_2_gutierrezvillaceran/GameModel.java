@@ -89,4 +89,5 @@ public class GameModel {
     public String getCropName(int tileID) {
         return farmLand.getTile(tileID).getCropName();
     }
+    public int getWitherCount(){return farmLand.countWither();}
 }

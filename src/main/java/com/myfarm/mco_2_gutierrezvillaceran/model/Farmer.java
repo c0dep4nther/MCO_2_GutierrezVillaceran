@@ -40,7 +40,7 @@ public class Farmer {
 
         if (success) {
             exp += item.getExpGain();
-            setMoney(item.getCost(),farmLand);
+            money -= item.getCost();
         }
 
         // set status to board
@@ -65,7 +65,7 @@ public class Farmer {
         farmLand.setPlantSuccess(false);
 
         // if crop type is Fruit Tree, occupy surrounding tiles
-        if (seed.getType().equals("Fruit Tree") && farmLot.getStatus().equals(TileStatus.PLOWED)) {
+        if (seed.getType().equals("Fruit Tree") && farmLot.getStatus().equals(TileStatus.PLOWED) && checkMoney(seed.getSeedCost())) {
             boolean tileEdge = farmLot.getIsEdge();
 
             // check if planting location is edge otherwise, check if surrounding tiles are empty
@@ -93,16 +93,16 @@ public class Farmer {
                     farmLot.setStatus(TileStatus.PLANTED);
                     farmLot.setHarvestDate(dayCount, harvestTime);
                     farmLand.setPlantSuccess(true);
-                    setMoney(seed.getSeedCost(),farmLand);
+                    money -= seed.getSeedCost();
                 }
             }
         // aside from Fruit Trees, all other crops are to be planted normally
-        } else if (farmLot.getStatus() == TileStatus.PLOWED) {
+        } else if (farmLot.getStatus() == TileStatus.PLOWED && checkMoney(seed.getSeedCost())) {
             farmLot.setCrop(seed);
             farmLot.setStatus(TileStatus.PLANTED);
             farmLot.setHarvestDate(dayCount, harvestTime);
             farmLand.setPlantSuccess(true);
-            setMoney(seed.getSeedCost(),farmLand);
+            money -= seed.getSeedCost();
         }
 
         return farmLand;
@@ -192,16 +192,16 @@ public class Farmer {
      *
      * @param money sets money of user
      */
-    public void setMoney(float money,Board farmLand){
+    public boolean checkMoney(float money){
         float temporary=this.money-money;
         if(temporary<0){
-            System.out.println("You don't have enough money! ");
-            farmLand.setPlantSuccess(false);
+            return false;
         }
         else{
-            this.money-=money;
+            return true;
         }
     }
+    
 
     /**
      *

@@ -130,7 +130,15 @@ public class Board {
         }
         System.out.println();
     }
-
+    public int countWither() {
+        int count=0;
+        for (int i = 1; i <= 50; i++) {
+            if (getTileStatus(i) == TileStatus.WITHERED) {
+                count++;
+            }
+        }
+        return count;
+    }
     // getters
     public boolean getPlantSuccess() {
         return plantSuccess;
