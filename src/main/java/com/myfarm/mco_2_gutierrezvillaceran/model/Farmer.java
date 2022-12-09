@@ -40,7 +40,7 @@ public class Farmer {
 
         if (success) {
             exp += item.getExpGain();
-            money -= item.getCost();
+            setMoney(item.getCost(),farmLand);
         }
 
         // set status to board
@@ -93,7 +93,7 @@ public class Farmer {
                     farmLot.setStatus(TileStatus.PLANTED);
                     farmLot.setHarvestDate(dayCount, harvestTime);
                     farmLand.setPlantSuccess(true);
-                    money -= seed.getSeedCost();
+                    setMoney(seed.getSeedCost(),farmLand);
                 }
             }
         // aside from Fruit Trees, all other crops are to be planted normally
@@ -102,7 +102,7 @@ public class Farmer {
             farmLot.setStatus(TileStatus.PLANTED);
             farmLot.setHarvestDate(dayCount, harvestTime);
             farmLand.setPlantSuccess(true);
-            money -= seed.getSeedCost();
+            setMoney(seed.getSeedCost(),farmLand);
         }
 
         return farmLand;
@@ -182,10 +182,25 @@ public class Farmer {
 
     /**
      *
-     * @return objectCoins
+     * @return money
      */
     public float getMoney() {
         return money;
+    }
+
+    /**
+     *
+     * @param money sets money of user
+     */
+    public void setMoney(float money,Board farmLand){
+        float temporary=this.money-money;
+        if(temporary<0){
+            System.out.println("You don't have enough money! ");
+            farmLand.setPlantSuccess(false);
+        }
+        else{
+            this.money-=money;
+        }
     }
 
     /**

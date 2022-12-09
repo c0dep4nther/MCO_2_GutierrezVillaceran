@@ -150,7 +150,7 @@ public class GameController implements Initializable {
                 } else {
                     report.setText("You failed to plant " + seedName.toLowerCase() +
                             " on tile " + tileID + ". Make sure the tile is plowed \nand unoccupied. " +
-                            "If it's a tree, make sure it's not on the edge of the farm.");
+                            "If it's a tree, make sure it's not on the edge of the farm. \n Otherwise, check if you have enough money");
                 }
 
                 toggleTile(false);
