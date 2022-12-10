@@ -77,10 +77,18 @@ public class Tool {
         return expGain;
     }
 
+    /**
+     *
+     * @return cost of action
+     */
     public int getCost() {
         return cost;
     }
 
+    /**
+     *
+     * @return success of action
+     */
     public boolean getActionSuccess() {
         return actionSuccess;
     }

@@ -133,31 +133,60 @@ public class Board {
         return dayCount;
     }
 
+    /**
+     *
+     * @return true if planting was successful
+     */
     public boolean getPlantSuccess() {
         return plantSuccess;
     }
 
+    /**
+     *
+     * @return true if harvest was successful
+     */
     public boolean getHarvestSuccess() {
         return harvestSuccess;
     }
 
+    /**
+     *
+     * @return money gained for harvest
+     */
     public float getHarvestGain() {
         return harvestGain;
     }
 
+    /**
+     *
+     * @return tile
+     */
     public HashMap<Integer, Tile> getTiles() {
         return tiles;
     }
 
     // setters
+
+    /**
+     *
+     * @param plantSuccess sets plant's success
+     */
     public void setPlantSuccess(boolean plantSuccess) {
         this.plantSuccess = plantSuccess;
     }
 
+    /**
+     *
+     * @param harvestSuccess sets harvest's success
+     */
     public void setHarvestSuccess(boolean harvestSuccess) {
         this.harvestSuccess = harvestSuccess;
     }
 
+    /**
+     *
+     * @param harvestGain earned objectCoins for harvest
+     */
     public void setHarvestGain(float harvestGain) {
         this.harvestGain = harvestGain;
     }

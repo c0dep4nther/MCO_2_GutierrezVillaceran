@@ -14,6 +14,11 @@ public class PlantController {
     private GameModel gameData;
     private Scene preScene;
 
+    /**
+     *
+     * @param event selecting seed
+     * @throws IOException
+     */
     public void onSelectSeed(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("game-view.fxml"));
         Scene scene;
@@ -39,6 +44,10 @@ public class PlantController {
         stage.show();
     }
 
+    /**
+     *
+     * @param event cancel the action
+     */
     public void onCancel(ActionEvent event) {
         Stage stage;
 
@@ -49,10 +58,19 @@ public class PlantController {
     }
 
     // setters
+
+    /**
+     *
+     * @param preScene sets scene
+     */
     public void setPreScene(Scene preScene) {
         this.preScene = preScene;
     }
 
+    /**
+     *
+     * @param gameData holds information of game
+     */
     public void setGameData(GameModel gameData) {
         this.gameData = gameData;
     }

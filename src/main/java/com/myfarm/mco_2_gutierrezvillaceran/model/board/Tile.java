@@ -26,9 +26,16 @@ public class Tile {
         fertilizerLevel = 0;
     }
 
+    /**
+     * increases water level
+     */
     public void addWaterLevel() {
         waterLevel++;
     }
+
+    /**
+     * resets tile's information
+     */
 
     public void resetTile() {
         status = TileStatus.UNPLOWED;
@@ -39,6 +46,9 @@ public class Tile {
         fertilizerLevel = 0;
     }
 
+    /**
+     * increases fertilizer level
+     */
     public void addFertilizerLevel() {
         fertilizerLevel++;
     }
@@ -93,6 +103,10 @@ public class Tile {
         return fertilizerLevel;
     }
 
+    /**
+     *
+     * @return if the selected plot is on the edge
+     */
     public boolean getIsEdge() {
         return isEdge;
     }

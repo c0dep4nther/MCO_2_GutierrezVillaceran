@@ -28,23 +28,42 @@ public class GameModel {
         farmLand = player.useTool(tool, farmLand, tileID);
     }
 
+    /**
+     *
+     * @param seedID ID of seed
+     * @param tileID ID of tile
+     */
     public void plantSeed(String seedID, int tileID) {
         Plant seed = seedList.get(seedID);
         farmLand = player.plantSeed(seed, farmLand, tileID);
     }
 
+    /**
+     * ends day
+     */
     public void endDay() {
         farmLand.endDay();
     }
 
+    /**
+     *
+     * @param tileID ID of tile
+     */
     public void harvest(int tileID) {
         farmLand = player.harvestPlant(farmLand, tileID);
     }
 
+    /**
+     * registers farmer
+     */
     public void register() {
         player.registerFarmer();
     }
 
+    /**
+     *
+     * @return checks if game is over
+     */
     public boolean checkGameOver() {
        boolean isGameOver = false;
        boolean plantExists = false;
@@ -72,37 +91,79 @@ public class GameModel {
     }
 
     // getters
+
+    /**
+     *
+     * @return plant's success to be planted
+     */
     public boolean getPlantSuccess() {
         return farmLand.getPlantSuccess();
     }
 
+    /**
+     *
+     * @return number of days that passed
+     */
     public int getDayCount() {
         return farmLand.getDayCount();
     }
 
+    /**
+     *
+     * @return level of farmer
+     */
     public int getLevel() {
         return player.getLevel();
     }
 
+    /**
+     *
+     * @return money of farmer
+     */
     public float getMoney() {
         return player.getMoney();
     }
 
+    /**
+     *
+     * @return experience of farmer
+     */
     public float getExp() {
         return player.getExp();
     }
 
+    /**
+     *
+     * @param tileID ID of tile
+     * @return tile
+     */
     public Tile getTile(int tileID) {
         return farmLand.getTile(tileID);
     }
 
+    /**
+     *
+     * @param tileID ID of tile
+     * @return status of tile
+     */
     public TileStatus getTileStatus(int tileID) {
         return farmLand.getTile(tileID).getStatus();
     }
 
+    /**
+     *
+     * @param tileID ID of tile
+     * @return harvest time of plant
+     */
     public int getHarvestTime(int tileID) {
         return farmLand.getTile(tileID).getCrop().getHarvestTime();
     }
+
+    /**
+     *
+     * @param seedID ID of seed
+     * @return cost of seed
+     */
 
     public int getSeedCost(String seedID) {
         int seedDiscount = player.getRegister().getSeedDiscount();
@@ -110,22 +171,43 @@ public class GameModel {
         return seedList.get(seedID).getSeedCost() + seedDiscount;
     }
 
+    /**
+     *
+     * @return success of harvest
+     */
     public boolean getHarvestSuccess() {
         return farmLand.getHarvestSuccess();
     }
 
+    /**
+     *
+     * @return gain in harvest
+     */
     public float getHarvestGain() {
         return farmLand.getHarvestGain();
     }
 
+    /**
+     *
+     * @param tileID ID of tile
+     * @return name of crop
+     */
     public String getCropName(int tileID) {
         return farmLand.getTile(tileID).getCropName();
     }
 
+    /**
+     *
+     * @return type of farmer's register
+     */
     public String getRegisterType() {
         return player.getRegisterType();
     }
 
+    /**
+     *
+     * @return success in registering
+     */
     public boolean getRegisterSuccess() {
         return player.getRegisterSuccess();
     }

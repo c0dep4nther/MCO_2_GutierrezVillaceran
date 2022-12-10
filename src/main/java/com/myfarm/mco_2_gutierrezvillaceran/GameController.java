@@ -42,6 +42,16 @@ public class GameController implements Initializable {
     private Button tileBtn;
     private Label tileLbl;
 
+    /**
+     *
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // set the game data asynchronously
@@ -90,10 +100,16 @@ public class GameController implements Initializable {
         toggleTile(false);
     }
 
+    /**
+     * updates register type of farmer
+     */
     public void updateRegisterInfo() {
         registerInfo.setText("Register Type: " + registerType);
     }
 
+    /**
+     * updates game information
+     */
     public void updateGameInfo() {
         int currentDay = gameData.getDayCount();
         int playerLevel = gameData.getLevel();
@@ -104,6 +120,10 @@ public class GameController implements Initializable {
                 "\nLevel: " + playerLevel + "\t\t\tExp: " + playerExp);
     }
 
+    /**
+     *
+     * @param event perform action on click
+     */
     public void onToolClick(ActionEvent event) {
         String tool = ((Button) event.getSource())
                 .getText()
@@ -123,6 +143,11 @@ public class GameController implements Initializable {
         report.setText("You are in " + tool + " mode." +
                 "\nPlease Select a tile.");
     }
+
+    /**
+     *
+     * @param event perform action on click
+     */
 
     public void onTileClick(ActionEvent event) {
         String tempTileID = ((Button) event.getSource())
@@ -220,6 +245,9 @@ public class GameController implements Initializable {
         }
     }
 
+    /**
+     * registers farmer
+     */
     public void onRegisterClick() {
         boolean registerSuccess;
 
@@ -244,6 +272,9 @@ public class GameController implements Initializable {
         }
     }
 
+    /**
+     * lets player sleep
+     */
     public void onSleepClick() {
         gameData.endDay();
         updateGameInfo();
@@ -251,6 +282,11 @@ public class GameController implements Initializable {
         report.setText("You slept for a day.");
     }
 
+    /**
+     *
+     * @param event lets player to plant
+     * @throws IOException
+     */
     public void onPlantClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plant-view.fxml"));
         Stage stage;
@@ -268,6 +304,12 @@ public class GameController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     *
+     * @param event creates new game
+     * @throws IOException
+     */
     public void onNewGame(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("endgame-view.fxml"));
         Stage stage;
@@ -280,6 +322,10 @@ public class GameController implements Initializable {
         stage.show();
     }
 
+    /**
+     * checks if player is losing
+     * @throws IOException
+     */
     public void loseCheck() throws IOException {
         boolean isGameOver = gameData.checkGameOver();
 
@@ -297,6 +343,10 @@ public class GameController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param toggle if there is an action, the tiles are shown
+     */
     public void toggleTile(boolean toggle) {
         String cropName;
         TileStatus status;
@@ -338,6 +388,9 @@ public class GameController implements Initializable {
         }
     }
 
+    /**
+     * shows tile in grid
+     */
     public void gridInit() {
         int count = 1;
         int row;
@@ -383,18 +436,36 @@ public class GameController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param mode farmer's action mode
+     */
      // setters
     public void setMode(FarmerAction mode) {
         this.mode = mode;
     }
 
+    /**
+     *
+     * @param seedName name of seed
+     */
+
     public void setSeedName(String seedName) {
         this.seedName = seedName;
     }
 
+    /**
+     *
+     * @param report status of what is happening
+     */
     public void setReport(String report) {
         this.report.setText(report);
     }
+
+    /**
+     *
+     * @param gameData information of the game
+     */
 
     public void setGameData(GameModel gameData) {
         this.gameData = gameData;

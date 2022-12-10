@@ -24,6 +24,9 @@ public class Farmer {
         }
     }
 
+    /**
+     * registers farmer
+     */
     public void registerFarmer() {
         // reset success tracker
         registerSuccess = false;
@@ -226,14 +229,26 @@ public class Farmer {
         return level;
     }
 
+    /**
+     *
+     * @return type of register
+     */
     public String getRegisterType() {
         return register.getFarmerType();
     }
 
+    /**
+     *
+     * @return success of register
+     */
     public boolean getRegisterSuccess() {
         return registerSuccess;
     }
 
+    /**
+     *
+     * @return farmer's register
+     */
     public FarmerType getRegister() {
         return register;
     }

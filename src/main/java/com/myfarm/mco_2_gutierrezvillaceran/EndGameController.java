@@ -10,6 +10,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class EndGameController {
+    /**
+     *
+     * @param event opens starting scene
+     * @throws IOException
+     */
     public void onRestart(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("game-view.fxml"));
         Scene scene;
