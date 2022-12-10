@@ -45,6 +45,27 @@ public class GameModel {
         player.registerFarmer();
     }
 
+    public boolean checkGameOver() {
+       boolean isGameOver = false;
+       boolean plantExists = false;
+
+        // loop through board to check if all plants are withered
+        for (Tile tile : farmLand.getTiles().values()) {
+            if (tile.getStatus() == TileStatus.PLANTED) {
+                plantExists = true;
+                break;
+            }
+        }
+
+        // if player can't afford anything, and no plant
+        // exists on board, game over
+        if (player.getMoney() < 5 && !plantExists) {
+            isGameOver = true;
+        }
+
+        return isGameOver;
+    }
+
     // getters
     public boolean getPlantSuccess() {
         return farmLand.getPlantSuccess();
@@ -103,6 +124,4 @@ public class GameModel {
     public boolean getRegisterSuccess() {
         return player.getRegisterSuccess();
     }
-
-    public int getWitherCount(){return farmLand.countWither();}
 }

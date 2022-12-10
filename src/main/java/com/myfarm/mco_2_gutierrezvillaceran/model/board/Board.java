@@ -125,25 +125,6 @@ public class Board {
         return tiles.get(tileNumber);
     }
 
-    /**
-     *
-     * @param tileNumber number of tile
-     * @return access tile status
-     */
-    public TileStatus getTileStatus(int tileNumber) {
-        return tiles.get(tileNumber).getStatus();
-    }
-
-    public int countWither() {
-        int count=0;
-        for (int i = 1; i <= 50; i++) {
-            if (getTileStatus(i) == TileStatus.WITHERED) {
-                count++;
-            }
-        }
-        return count;
-    }
-
     // getters
     /**
      * @return day number/count
@@ -162,6 +143,10 @@ public class Board {
 
     public float getHarvestGain() {
         return harvestGain;
+    }
+
+    public HashMap<Integer, Tile> getTiles() {
+        return tiles;
     }
 
     // setters

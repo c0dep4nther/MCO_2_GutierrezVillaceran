@@ -29,6 +29,8 @@ public class GameController implements Initializable {
     @FXML
     private Button plantBtn;
     @FXML
+    private Button newGame;
+    @FXML
     private Label gameInfo;
     @FXML
     private Label registerInfo;
@@ -55,26 +57,26 @@ public class GameController implements Initializable {
                 1, 2,0, 1,2,
                 1, 5, 6, 5));
         gameData.addSeed("CARROT", new Plant("Carrot", "Root Crop", 3,
-                1,2,0,1,2, 1,
-                10, 9, 7.5f));
+                1,2,0,1,2,
+                1, 10, 9, 7.5f));
         gameData.addSeed("POTATO", new Plant("Potato", "Root Crop", 5,
-                3,4,1,2,10, 1,
-                20, 3, 12.5f));
+                3,4,1,2,10,
+                1, 20, 3, 12.5f));
         gameData.addSeed("ROSE", new Plant("Rose", "Flower", 1,
-                1, 2, 0, 1, 1, 1,
-                5, 5, 2.5f));
+                1, 2, 0, 1, 1,
+                1, 5, 5, 2.5f));
         gameData.addSeed("TULIP", new Plant("Tulip", "Flower", 2,
-                2, 3, 0, 1, 1, 1,
-                10, 9, 5));
+                2, 3, 0, 1, 1,
+                1, 10, 9, 5));
         gameData.addSeed("SUNFLOWER", new Plant("Sunflower", "Flower", 3,
-                2, 3, 1, 2, 1, 1,
-                20, 19, 7.5f));
+                2, 3, 1, 2, 1,
+                1, 20, 19, 7.5f));
         gameData.addSeed("MANGO", new Plant("Mango", "Fruit Tree", 10,
-                7, 7, 4, 4, 15, 5,
-                100, 8, 25));
+                7, 7, 4, 4, 15,
+                5, 100, 8, 25));
         gameData.addSeed("APPLE", new Plant("Apple", "Fruit Tree", 10,
-                7, 7, 5, 5, 15, 10,
-                200, 5, 25));
+                7, 7, 5, 5, 15,
+                10, 200, 5, 25));
 
         // initialize tools
         gameData.addTool("WATER", new Tool("Watering Can", 0, 0.5f));
@@ -102,7 +104,6 @@ public class GameController implements Initializable {
                 "\nLevel: " + playerLevel + "\t\t\tExp: " + playerExp);
     }
 
-//        TODO: Implement game end conditions
     public void onToolClick(ActionEvent event) {
         String tool = ((Button) event.getSource())
                 .getText()
@@ -153,16 +154,10 @@ public class GameController implements Initializable {
                             " on tile " + tileID + " which costs " + seedCost + " Objectcoins.\n"
                             + "Harvest is in " + harvestTime + " days.");
                 } else {
-                    if(gameData.getWitherCount()==50&&gameData.getMoney()==0){
-                        report.setText("You do not have enough money or any tiles left to plant on." +
-                                "\nClick new game!");
-                    }
-                    else{
-                        report.setText("You failed to plant " + seedName.toLowerCase() +
-                                " on tile " + tileID + ". Make sure the tile is plowed \nand unoccupied. " +
-                                "If it's a tree, make sure it's not on the edge of the farm.\n " +
-                                "Otherwise, check if you have enough money.");
-                    }
+                    report.setText("You failed to plant " + seedName.toLowerCase() +
+                            " on tile " + tileID + ". Make sure the tile is plowed \nand unoccupied. " +
+                            "If it's a tree, make sure it's not on the edge of the farm.\n " +
+                            "Otherwise, check if you have enough money.");
                 }
             }
             case WATER -> {
@@ -217,6 +212,12 @@ public class GameController implements Initializable {
         // refresh UI
         toggleTile(false);
         updateGameInfo();
+
+        try {
+            loseCheck();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void onRegisterClick() {
@@ -234,6 +235,12 @@ public class GameController implements Initializable {
             report.setText("You have reached the max farmer rank.");
         } else {
             report.setText("You can't register to the next farmer rank yet.");
+        }
+
+        try {
+            loseCheck();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -273,7 +280,22 @@ public class GameController implements Initializable {
         stage.show();
     }
 
-    // gameover()
+    public void loseCheck() throws IOException {
+        boolean isGameOver = gameData.checkGameOver();
+
+        if (isGameOver) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("endgame-view.fxml"));
+            Stage stage;
+            Scene scene;
+            Parent root = loader.load();
+
+            // load endgame view
+            stage = (Stage) newGame.getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
 
     public void toggleTile(boolean toggle) {
         String cropName;
