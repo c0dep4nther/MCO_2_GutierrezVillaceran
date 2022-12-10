@@ -81,6 +81,7 @@ public class GameController implements Initializable {
         gameData.addTool("PLOW", new Tool("Plow", 0, 0.5f));
         gameData.addTool("FERTILIZER", new Tool("Fertilizer", 10, 4));
         gameData.addTool("SHOVEL", new Tool("Shovel", 7, 2));
+        gameData.addTool("PICKAXE", new Tool("Pickaxe", 50, 15));
         report.setText("");
 
         gridInit();
@@ -101,10 +102,7 @@ public class GameController implements Initializable {
                 "\nLevel: " + playerLevel + "\t\t\tExp: " + playerExp);
     }
 
-//        TODO: Implement Rocked Tile and Pickaxe Tool
 //        TODO: Implement game end conditions
-//        TODO: Protect money from negative values (e.g. when buying seeds)
-//        TODO: Implement Proper Spending of Money (e.g. using shovels)
     public void onToolClick(ActionEvent event) {
         String tool = ((Button) event.getSource())
                 .getText()
@@ -142,8 +140,6 @@ public class GameController implements Initializable {
                 } else {
                     report.setText("Can't plow tile " + tileID + ".");
                 }
-
-                toggleTile(false);
             }
             case PLANT -> {
                 gameData.plantSeed(seedName, tileID);
@@ -167,10 +163,7 @@ public class GameController implements Initializable {
                                 "If it's a tree, make sure it's not on the edge of the farm.\n " +
                                 "Otherwise, check if you have enough money.");
                     }
-
                 }
-
-                toggleTile(false);
             }
             case WATER -> {
                 gameData.activeTool("WATER", tileID);
@@ -181,8 +174,6 @@ public class GameController implements Initializable {
                 } else {
                     report.setText("Can't water tile " + tileID + ".");
                 }
-
-                toggleTile(false);
             }
             case FERTILIZER -> {
                 gameData.activeTool("FERTILIZER", tileID);
@@ -193,8 +184,6 @@ public class GameController implements Initializable {
                 } else {
                     report.setText("Can't fertilize tile " + tileID + ".");
                 }
-
-                toggleTile(false);
             }
             case HARVEST -> {
                 gameData.harvest(tileID);
@@ -208,17 +197,25 @@ public class GameController implements Initializable {
                 } else {
                     report.setText("Can't harvest tile " + tileID + ".");
                 }
-
-                toggleTile(false);
             }
             case SHOVEL -> {
                 gameData.activeTool("SHOVEL", tileID);
-
                 report.setText("You used a shovel on tile " + tileID + ".");
-                toggleTile(false);
+
+            }
+            case PICKAXE -> {
+                gameData.activeTool("PICKAXE", tileID);
+
+                if (gameData.getTile(tileID).getStatus() == TileStatus.ROCK) {
+                    report.setText("You used a pickaxe on tile " + tileID + ".");
+                } else {
+                    report.setText("Can't use pickaxe on tile " + tileID + ".");
+                }
             }
         }
 
+        // refresh UI
+        toggleTile(false);
         updateGameInfo();
     }
 

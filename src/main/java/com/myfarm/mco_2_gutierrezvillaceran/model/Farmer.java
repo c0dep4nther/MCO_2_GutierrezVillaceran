@@ -59,7 +59,7 @@ public class Farmer {
         boolean success;
 
         farmLot = farmLand.getTile(tileNumber);
-        item.toolAction(farmLot);
+        item.toolAction(farmLot, money);
 
         success = item.getActionSuccess();
 
@@ -82,6 +82,7 @@ public class Farmer {
      * @return updated board
      */
     public Board plantSeed(Plant seed, Board farmLand, int tileNumber) {
+        boolean isAffordable = money >= seed.getSeedCost(); // check if player has enough money
         int dayCount = farmLand.getDayCount();
         int harvestTime = seed.getHarvestTime();
         Tile farmLot = farmLand.getTile(tileNumber);
@@ -89,45 +90,49 @@ public class Farmer {
         // reset success tracker
         farmLand.setPlantSuccess(false);
 
-        // if crop type is Fruit Tree, occupy surrounding tiles
-        if (seed.getType().equals("Fruit Tree") && farmLot.getStatus().equals(TileStatus.PLOWED) && checkMoney(seed.getSeedCost())) {
-            boolean tileEdge = farmLot.getIsEdge();
+        if (isAffordable) {
+            // if crop type is Fruit Tree, occupy surrounding tiles
+            if (seed.getType().equals("Fruit Tree") && farmLot.getStatus().equals(TileStatus.PLOWED)) {
+                boolean tileEdge = farmLot.getIsEdge();
 
-            // check if planting location is edge otherwise, check if surrounding tiles are empty
-            if (!tileEdge) {
-                TileStatus leftStatus = farmLand.getTile(tileNumber - 1).getStatus();
-                TileStatus rightStatus = farmLand.getTile(tileNumber + 1).getStatus();
-                TileStatus topStatus = farmLand.getTile(tileNumber - 5).getStatus();
-                TileStatus bottomStatus = farmLand.getTile(tileNumber + 5).getStatus();
-                TileStatus topLeftStatus = farmLand.getTile(tileNumber - 6).getStatus();
-                TileStatus topRightStatus = farmLand.getTile(tileNumber - 4).getStatus();
-                TileStatus bottomLeftStatus = farmLand.getTile(tileNumber + 6).getStatus();
-                TileStatus bottomRightStatus = farmLand.getTile(tileNumber + 4).getStatus();
+                // check if planting location is edge otherwise,
+                // check if surrounding tiles are empty
+                if (!tileEdge) {
+                    TileStatus leftStatus = farmLand.getTile(tileNumber - 1).getStatus();
+                    TileStatus rightStatus = farmLand.getTile(tileNumber + 1).getStatus();
+                    TileStatus topStatus = farmLand.getTile(tileNumber - 5).getStatus();
+                    TileStatus bottomStatus = farmLand.getTile(tileNumber + 5).getStatus();
+                    TileStatus topLeftStatus = farmLand.getTile(tileNumber - 6).getStatus();
+                    TileStatus topRightStatus = farmLand.getTile(tileNumber - 4).getStatus();
+                    TileStatus bottomLeftStatus = farmLand.getTile(tileNumber + 6).getStatus();
+                    TileStatus bottomRightStatus = farmLand.getTile(tileNumber + 4).getStatus();
 
-                if ((leftStatus == TileStatus.UNPLOWED || leftStatus == TileStatus.PLOWED)
-                        && (rightStatus == TileStatus.UNPLOWED || rightStatus == TileStatus.PLOWED)
-                        && (topStatus == TileStatus.UNPLOWED || topStatus == TileStatus.PLOWED)
-                        && (bottomStatus == TileStatus.UNPLOWED || bottomStatus == TileStatus.PLOWED)
-                        && (topLeftStatus == TileStatus.UNPLOWED || topLeftStatus == TileStatus.PLOWED)
-                        && (topRightStatus == TileStatus.UNPLOWED || topRightStatus == TileStatus.PLOWED)
-                        && (bottomLeftStatus == TileStatus.UNPLOWED || bottomLeftStatus == TileStatus.PLOWED)
-                        && (bottomRightStatus == TileStatus.UNPLOWED || bottomRightStatus == TileStatus.PLOWED)) {
+                    if ((leftStatus == TileStatus.UNPLOWED || leftStatus == TileStatus.PLOWED)
+                            && (rightStatus == TileStatus.UNPLOWED || rightStatus == TileStatus.PLOWED)
+                            && (topStatus == TileStatus.UNPLOWED || topStatus == TileStatus.PLOWED)
+                            && (bottomStatus == TileStatus.UNPLOWED || bottomStatus == TileStatus.PLOWED)
+                            && (topLeftStatus == TileStatus.UNPLOWED || topLeftStatus == TileStatus.PLOWED)
+                            && (topRightStatus == TileStatus.UNPLOWED || topRightStatus == TileStatus.PLOWED)
+                            && (bottomLeftStatus == TileStatus.UNPLOWED || bottomLeftStatus == TileStatus.PLOWED)
+                            && (bottomRightStatus == TileStatus.UNPLOWED || bottomRightStatus == TileStatus.PLOWED)) {
 
-                    // perform planting action
-                    farmLot.setCrop(seed);
-                    farmLot.setStatus(TileStatus.PLANTED);
-                    farmLot.setHarvestDate(dayCount, harvestTime);
-                    farmLand.setPlantSuccess(true);
-                    money -= seed.getSeedCost() + register.getSeedDiscount();
+                        // perform planting action
+                        farmLot.setCrop(seed);
+                        farmLot.setStatus(TileStatus.PLANTED);
+                        farmLot.setHarvestDate(dayCount, harvestTime);
+                        farmLand.setPlantSuccess(true);
+                        money -= seed.getSeedCost() + register.getSeedDiscount();
+                    }
                 }
+            // aside from Fruit Trees, all other
+            // crops are to be planted normally
+            } else if (farmLot.getStatus() == TileStatus.PLOWED) {
+                farmLot.setCrop(seed);
+                farmLot.setStatus(TileStatus.PLANTED);
+                farmLot.setHarvestDate(dayCount, harvestTime);
+                farmLand.setPlantSuccess(true);
+                money -= (seed.getSeedCost() + register.getSeedDiscount());
             }
-        // aside from Fruit Trees, all other crops are to be planted normally
-        } else if (farmLot.getStatus() == TileStatus.PLOWED && checkMoney(seed.getSeedCost())) {
-            farmLot.setCrop(seed);
-            farmLot.setStatus(TileStatus.PLANTED);
-            farmLot.setHarvestDate(dayCount, harvestTime);
-            farmLand.setPlantSuccess(true);
-            money -= (seed.getSeedCost() + register.getSeedDiscount());
         }
 
         return farmLand;
@@ -212,21 +217,6 @@ public class Farmer {
     public float getMoney() {
         return money;
     }
-
-    /**
-     *
-     * @param money sets money of user
-     */
-    public boolean checkMoney(float money){
-        float temporary=this.money-money;
-        if(temporary<0){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-    
 
     /**
      *

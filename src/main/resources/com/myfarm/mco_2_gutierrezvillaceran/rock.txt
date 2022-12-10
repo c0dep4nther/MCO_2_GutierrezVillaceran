@@ -1,0 +1,2 @@
+Enter Total Number of Rocks Below to Generate on Board:
+10

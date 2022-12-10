@@ -23,53 +23,50 @@ public class Tool {
     /**
      * @param farmLot tile performed action on
      */
-    public void toolAction (Tile farmLot) {
-        switch (name) {
-            case "Watering Can" -> {
-                actionSuccess = false;
+    public void toolAction (Tile farmLot, float money) {
 
-                // water only if a crop exists
-                if (farmLot.getCrop() != null) {
-                    farmLot.addWaterLevel();
-                    actionSuccess = true;
+        // reset success tracking
+        actionSuccess = false;
+
+        // check if money is sufficient
+        if (money >= cost) {
+            switch (name) {
+                case "Watering Can" -> {
+                    // water only if a crop exists
+                    if (farmLot.getCrop() != null) {
+                        farmLot.addWaterLevel();
+                        actionSuccess = true;
+                    }
                 }
-            }
-            case "Plow" -> {
-                actionSuccess = false;
-
-                // only plow if tile is unplowed
-                if (farmLot.getStatus() == TileStatus.UNPLOWED) {
-                    farmLot.setStatus(TileStatus.PLOWED);
-                    actionSuccess = true;
+                case "Plow" -> {
+                    // only plow if tile is unplowed
+                    if (farmLot.getStatus() == TileStatus.UNPLOWED) {
+                        farmLot.setStatus(TileStatus.PLOWED);
+                        actionSuccess = true;
+                    }
                 }
-            }
-            case "Fertilizer" -> {
-                actionSuccess = false;
-
-                // fertilize only if a crop exists
-                if (farmLot.getCrop() != null) {
-                    farmLot.addFertilizerLevel();
-                    actionSuccess = true;
+                case "Fertilizer" -> {
+                    // fertilize only if a crop exists
+                    if (farmLot.getCrop() != null) {
+                        farmLot.addFertilizerLevel();
+                        actionSuccess = true;
+                    }
                 }
-            }
-//            case "Pickaxe" -> {
-//
-//            }
-            case "Shovel" -> {
-                actionSuccess = true;
+                case "Pickaxe" -> {
+                    // only use on rock tiles
+                    if (farmLot.getStatus() == TileStatus.ROCK) {
+                        farmLot.setStatus(TileStatus.UNPLOWED);
+                        actionSuccess = true;
+                    }
+                }
+                case "Shovel" -> {
+                    actionSuccess = true;
 
-                // reset the tile
-                farmLot.resetTile();
+                    // reset the tile
+                    farmLot.resetTile();
+                }
             }
         }
-    }
-
-    /**
-     *
-     * @return name of tool
-     */
-    public String getName() {
-        return name;
     }
 
     /**

@@ -2,7 +2,10 @@ package com.myfarm.mco_2_gutierrezvillaceran.model.board;
 
 import com.myfarm.mco_2_gutierrezvillaceran.model.TileStatus;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Board {
     // use hashmap to store integer as key and then tile as value
@@ -16,12 +19,38 @@ public class Board {
      * constructs board
      */
     public Board() {
-        for (int count = 1; count <= 50; count++) {
+        File rockLocations = new File("src/main/resources/com" +
+                "/myfarm/mco_2_gutierrezvillaceran" +
+                "/rock.txt");
+        Scanner rockScanner;
+        int rockTotal;
+        int count;
+
+        for (count = 1; count <= 50; count++) {
             if (count < 6 || count > 45 || count % 5 == 0 || count % 5 == 1) {
                 tiles.put(count, new Tile(true));
             } else {
                 tiles.put(count, new Tile(false));
             }
+        }
+
+        try {
+            rockScanner = new Scanner(rockLocations);
+
+            // read 2nd line then randomize rock placement
+            rockScanner.nextLine();
+            rockTotal = rockScanner.nextInt();
+
+            // loop through rockTotal times
+            // then randomize rock placement
+            for (count = 0; count < rockTotal; count++) {
+                // generate random number between 1 and 50
+                int rockLocation = (int) (Math.random() * 50) + 1;
+
+                tiles.get(rockLocation).setStatus(TileStatus.ROCK);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
         }
     }
 
@@ -105,30 +134,6 @@ public class Board {
         return tiles.get(tileNumber).getStatus();
     }
 
-    /**
-     * @return day number/count
-     */
-    public int getDayCount() {
-        return dayCount;
-    }
-
-    /**
-     * displays board with status
-     */
-    public void displayBoard() {
-        for (int i = 1; i <= 50; i++) {
-            if (getTileStatus(i)==TileStatus.PLANTED){
-                System.out.print(i + "\t[" + getTile(i).getCropName().toUpperCase() + "]\t");
-            } else {
-                System.out.print(i + "\t[" + getTileStatus(i) + "]\t");
-            }
-
-            if (i % 10 == 0) {
-                System.out.println();
-            }
-        }
-        System.out.println();
-    }
     public int countWither() {
         int count=0;
         for (int i = 1; i <= 50; i++) {
@@ -138,7 +143,15 @@ public class Board {
         }
         return count;
     }
+
     // getters
+    /**
+     * @return day number/count
+     */
+    public int getDayCount() {
+        return dayCount;
+    }
+
     public boolean getPlantSuccess() {
         return plantSuccess;
     }
