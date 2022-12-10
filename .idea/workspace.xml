@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="Add Rock Tile Feature&#10;&#10;- rocks now appear in the tile randomly&#10;- number of rock tiles are defined by File input&#10;- rocks can only be removed by pickaxe&#10;- optimized player budget tracking">
+    <list default="true" id="27901c33-3a29-49d8-b01d-80669c2cd275" name="Changes" comment="Add Game Over Mechanics&#10;&#10;- end game when player has no money and no growing crops are present&#10;- change dialogue when game over&#10;- removed unnecessary methods in each class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myfarm/mco_2_gutierrezvillaceran/model/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/endgame-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/endgame-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/myfarm/mco_2_gutierrezvillaceran/game-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670660990423</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add Game Over Mechanics&#10;&#10;- end game when player has no money and no growing crops are present&#10;- change dialogue when game over&#10;- removed unnecessary methods in each class">
+      <created>1670669487568</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1670669487568</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -264,7 +267,8 @@
     <MESSAGE value="Implement Harvest Feature&#10;&#10;- removed total exp computation for leveling system&#10;- each success for player actions will now reset to false&#10;- when trees are planted, planting crops beside it is possible&#10;- register info is added but non-functional" />
     <MESSAGE value="Complete Farmer Registration&#10;&#10;- Remove RegisterFarmer.java as it's a duplicate for FarmerType.java&#10;- listener included for register button&#10;- include dedicated label for showing registration status of player" />
     <MESSAGE value="Add Rock Tile Feature&#10;&#10;- rocks now appear in the tile randomly&#10;- number of rock tiles are defined by File input&#10;- rocks can only be removed by pickaxe&#10;- optimized player budget tracking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Rock Tile Feature&#10;&#10;- rocks now appear in the tile randomly&#10;- number of rock tiles are defined by File input&#10;- rocks can only be removed by pickaxe&#10;- optimized player budget tracking" />
+    <MESSAGE value="Add Game Over Mechanics&#10;&#10;- end game when player has no money and no growing crops are present&#10;- change dialogue when game over&#10;- removed unnecessary methods in each class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Game Over Mechanics&#10;&#10;- end game when player has no money and no growing crops are present&#10;- change dialogue when game over&#10;- removed unnecessary methods in each class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

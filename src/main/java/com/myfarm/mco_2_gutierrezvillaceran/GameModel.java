@@ -48,6 +48,7 @@ public class GameModel {
     public boolean checkGameOver() {
        boolean isGameOver = false;
        boolean plantExists = false;
+       int witherCount = 0;
 
         // loop through board to check if all plants are withered
         for (Tile tile : farmLand.getTiles().values()) {
@@ -55,11 +56,15 @@ public class GameModel {
                 plantExists = true;
                 break;
             }
+
+            if (tile.getStatus() == TileStatus.WITHERED) {
+                witherCount++;
+            }
         }
 
         // if player can't afford anything, and no plant
         // exists on board, game over
-        if (player.getMoney() < 5 && !plantExists) {
+        if (player.getMoney() < 5 && !plantExists || witherCount == 50) {
             isGameOver = true;
         }
 
