@@ -15,7 +15,7 @@ public class Plant {
     private final float expGain;
 
     /**
-     *
+     * constructor for plant
      * @param name  name of plant
      * @param type  type of plant
      * @param harvestTime   harvest time of plant
@@ -50,6 +50,7 @@ public class Plant {
     // getters
 
     /**
+     * getter for name of plant
      * @return name of plant
      */
     public String getName() {
@@ -57,6 +58,7 @@ public class Plant {
     }
 
     /**
+     * getter for type of plant
      * @return type of plant
      */
     public String getType() {
@@ -64,6 +66,7 @@ public class Plant {
     }
 
     /**
+     * getter for harvest time of plant
      * @return harvest time of plant
      */
     public int getHarvestTime() {
@@ -71,6 +74,7 @@ public class Plant {
     }
 
     /**
+     * getter for water needed by plant
      * @return amount of water needed by plant
      */
     public int getWaterNeed() {
@@ -78,7 +82,7 @@ public class Plant {
     }
 
     /**
-     *
+     * getter for water bonus limit
      * @return water bonus limit
      */
     public int getWaterBL() {
@@ -86,7 +90,7 @@ public class Plant {
     }
 
     /**
-     *
+     * getter for amount of fertilizer needed by plant
      * @return amount of fertilizer needed by plant
      */
     public int getFertilizerNeed() {
@@ -94,7 +98,7 @@ public class Plant {
     }
 
     /**
-     *
+     * getter for fertilizer bonus limit
      * @return fertilizer bonus limit
      */
     public int getFertilizerBL() {
@@ -102,7 +106,7 @@ public class Plant {
     }
 
     /**
-     *
+     * getter for maximum crop produce of plant
      * @return maximum crop produce of plant
      */
     public int getMaxProduce() {
@@ -110,7 +114,7 @@ public class Plant {
     }
 
     /**
-     *
+     * getter for minimum crop produce by plant
      * @return minimum crop produce by plant
      */
     public int getMinProduce() {
@@ -118,7 +122,7 @@ public class Plant {
     }
 
     /**
-     *
+     * getter for cost of buying seed
      * @return cost of buying seed
      */
 
@@ -127,7 +131,7 @@ public class Plant {
     }
 
     /**
-     *
+     * getter for price of selling crop
      * @return price of selling crop
      */
     public int getSellPrice() {
@@ -135,6 +139,7 @@ public class Plant {
     }
 
     /**
+     * getter for experience gained per crop
      * @return experience gained per crop
      */
     public float getExpGain() {

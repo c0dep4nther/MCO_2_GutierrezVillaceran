@@ -11,9 +11,9 @@ import java.io.IOException;
 
 public class EndGameController {
     /**
-     *
+     * Restarts on event
      * @param event opens starting scene
-     * @throws IOException
+     * @throws IOException if file is not found
      */
     public void onRestart(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("game-view.fxml"));

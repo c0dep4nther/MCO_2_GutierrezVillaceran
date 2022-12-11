@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class GameApplication extends Application {
     /**
-     *
+     * starts game
      * @param stage the primary stage for this application, onto which
      * the application scene can be set.
      * Applications may create other stages, if needed, but they will not be

@@ -9,7 +9,7 @@ public class Tool {
     private boolean actionSuccess;
 
     /**
-     *
+     * constructor for tool
      * @param name name of tool
      * @param cost cost of tool
      * @param expGain experience gained by using tool
@@ -21,6 +21,7 @@ public class Tool {
     }
 
     /**
+     * perform action on farmLot
      * @param farmLot tile performed action on
      */
     public void toolAction (Tile farmLot, float money) {
@@ -70,7 +71,7 @@ public class Tool {
     }
 
     /**
-     *
+     * getter for experience gained by using tool
      * @return experience gained by using tool
      */
     public float getExpGain() {
@@ -78,7 +79,7 @@ public class Tool {
     }
 
     /**
-     *
+     * getter for cost of action
      * @return cost of action
      */
     public int getCost() {
@@ -86,7 +87,7 @@ public class Tool {
     }
 
     /**
-     *
+     * getter for success of action
      * @return success of action
      */
     public boolean getActionSuccess() {

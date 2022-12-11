@@ -15,7 +15,7 @@ public class PlantController {
     private Scene preScene;
 
     /**
-     *
+     * action performed on select seed
      * @param event selecting seed
      * @throws IOException
      */
@@ -45,7 +45,7 @@ public class PlantController {
     }
 
     /**
-     *
+     * cancel action
      * @param event cancel the action
      */
     public void onCancel(ActionEvent event) {
@@ -60,7 +60,7 @@ public class PlantController {
     // setters
 
     /**
-     *
+     * setter for pre scene
      * @param preScene sets scene
      */
     public void setPreScene(Scene preScene) {
@@ -68,7 +68,7 @@ public class PlantController {
     }
 
     /**
-     *
+     * setter for game data
      * @param gameData holds information of game
      */
     public void setGameData(GameModel gameData) {

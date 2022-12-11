@@ -56,7 +56,7 @@ public class Tile {
     // getters
 
     /**
-     *
+     * getter for status of tile
      * @return tile status
      */
     public TileStatus getStatus() {
@@ -64,7 +64,7 @@ public class Tile {
     }
 
     /**
-     *
+     * getter for crop
      * @return plant/crop
      */
     public Plant getCrop() {
@@ -72,7 +72,7 @@ public class Tile {
     }
 
     /**
-     *
+     * getter for crop name
      * @return crop name
      */
     public String getCropName() {
@@ -80,7 +80,7 @@ public class Tile {
     }
 
     /**
-     *
+     * getter for water level
      * @return level of water applied
      */
     public int getWaterLevel() {
@@ -88,7 +88,7 @@ public class Tile {
     }
 
     /**
-     *
+     * getter for date of harvest
      * @return date of plant's harvest
      */
     public int getHarvestDate() {
@@ -96,7 +96,7 @@ public class Tile {
     }
 
     /**
-     *
+     * getter for fertilizer level
      * @return amount of fertilizer applied
      */
     public int getFertilizerLevel() {
@@ -104,7 +104,7 @@ public class Tile {
     }
 
     /**
-     *
+     * getter for if edge tile
      * @return if the selected plot is on the edge
      */
     public boolean getIsEdge() {
@@ -114,7 +114,7 @@ public class Tile {
     // setters
 
     /**
-     *
+     * setter for status of tile
      * @param status status of tile
      */
     public void setStatus(TileStatus status) {
@@ -122,7 +122,7 @@ public class Tile {
     }
 
     /**
-     *
+     * setter for harvest date
      * @param harvestDate date of plant's harvest
      * @param harvestTime amount of days for plant to be harvested
      */
@@ -133,7 +133,7 @@ public class Tile {
     }
 
     /**
-     *
+     * setter for crop
      * @param crop plant details
      */
     public void setCrop(Plant crop) {

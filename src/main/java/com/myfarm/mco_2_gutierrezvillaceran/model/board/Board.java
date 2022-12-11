@@ -113,6 +113,7 @@ public class Board {
     }
 
     /**
+     * getter for tile
      * @param tileNumber number of tile
      * @return access the tile value
      */
@@ -127,6 +128,7 @@ public class Board {
 
     // getters
     /**
+     * getter for counting number of days
      * @return day number/count
      */
     public int getDayCount() {
@@ -134,7 +136,7 @@ public class Board {
     }
 
     /**
-     *
+     * getter for status of planting
      * @return true if planting was successful
      */
     public boolean getPlantSuccess() {
@@ -142,7 +144,7 @@ public class Board {
     }
 
     /**
-     *
+     * getter for harvest's status of success
      * @return true if harvest was successful
      */
     public boolean getHarvestSuccess() {
@@ -150,7 +152,7 @@ public class Board {
     }
 
     /**
-     *
+     * getter for gain in harvest
      * @return money gained for harvest
      */
     public float getHarvestGain() {
@@ -158,7 +160,7 @@ public class Board {
     }
 
     /**
-     *
+     * getter for tiles
      * @return tile
      */
     public HashMap<Integer, Tile> getTiles() {
@@ -168,7 +170,7 @@ public class Board {
     // setters
 
     /**
-     *
+     * setter for status of planting
      * @param plantSuccess sets plant's success
      */
     public void setPlantSuccess(boolean plantSuccess) {
@@ -176,7 +178,7 @@ public class Board {
     }
 
     /**
-     *
+     * setter for harvest action success
      * @param harvestSuccess sets harvest's success
      */
     public void setHarvestSuccess(boolean harvestSuccess) {
@@ -184,7 +186,7 @@ public class Board {
     }
 
     /**
-     *
+     * setter for harvest's gain
      * @param harvestGain earned objectCoins for harvest
      */
     public void setHarvestGain(float harvestGain) {

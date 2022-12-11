@@ -52,7 +52,7 @@ public class Farmer {
     }
 
     /**
-     *
+     * uses tool on board
      * @param item tool used
      * @param farmLand initialized board
      * @return updated board
@@ -142,7 +142,7 @@ public class Farmer {
     }
 
     /**
-     *
+     * harvesting of plant in board
      * @param farmLand board
      * @return updated board
      */
@@ -206,7 +206,7 @@ public class Farmer {
     // getters
 
     /**
-     *
+     * getter experience of player
      * @return experience of player
      */
     public float getExp() {
@@ -214,7 +214,7 @@ public class Farmer {
     }
 
     /**
-     *
+     * getter for player's money
      * @return money
      */
     public float getMoney() {
@@ -222,7 +222,7 @@ public class Farmer {
     }
 
     /**
-     *
+     * getter for player's level
      * @return player's level
      */
     public int getLevel() {
@@ -230,7 +230,7 @@ public class Farmer {
     }
 
     /**
-     *
+     * getter for player's register type
      * @return type of register
      */
     public String getRegisterType() {
@@ -238,7 +238,7 @@ public class Farmer {
     }
 
     /**
-     *
+     * getter for registration's status
      * @return success of register
      */
     public boolean getRegisterSuccess() {
@@ -246,7 +246,7 @@ public class Farmer {
     }
 
     /**
-     *
+     * getter for player's register
      * @return farmer's register
      */
     public FarmerType getRegister() {

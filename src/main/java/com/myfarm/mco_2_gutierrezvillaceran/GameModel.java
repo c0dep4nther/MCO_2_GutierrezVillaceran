@@ -29,7 +29,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * plants seed
      * @param seedID ID of seed
      * @param tileID ID of tile
      */
@@ -39,14 +39,14 @@ public class GameModel {
     }
 
     /**
-     * ends day
+     * ends day and proceeds to the next
      */
     public void endDay() {
         farmLand.endDay();
     }
 
     /**
-     *
+     * harvests in tileID
      * @param tileID ID of tile
      */
     public void harvest(int tileID) {
@@ -54,14 +54,14 @@ public class GameModel {
     }
 
     /**
-     * registers farmer
+     * registers farmer to the next type
      */
     public void register() {
         player.registerFarmer();
     }
 
     /**
-     *
+     * checks if game is over
      * @return checks if game is over
      */
     public boolean checkGameOver() {
@@ -93,7 +93,7 @@ public class GameModel {
     // getters
 
     /**
-     *
+     * getter for plant success
      * @return plant's success to be planted
      */
     public boolean getPlantSuccess() {
@@ -101,7 +101,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for number of days
      * @return number of days that passed
      */
     public int getDayCount() {
@@ -109,7 +109,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for farmer's level
      * @return level of farmer
      */
     public int getLevel() {
@@ -117,7 +117,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for farmer's money
      * @return money of farmer
      */
     public float getMoney() {
@@ -125,7 +125,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for experience
      * @return experience of farmer
      */
     public float getExp() {
@@ -133,7 +133,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for tile
      * @param tileID ID of tile
      * @return tile
      */
@@ -142,7 +142,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for tile Status
      * @param tileID ID of tile
      * @return status of tile
      */
@@ -151,7 +151,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for harvest time
      * @param tileID ID of tile
      * @return harvest time of plant
      */
@@ -160,7 +160,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for seed cost
      * @param seedID ID of seed
      * @return cost of seed
      */
@@ -172,7 +172,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for harvest's success
      * @return success of harvest
      */
     public boolean getHarvestSuccess() {
@@ -180,7 +180,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for harvest's gain
      * @return gain in harvest
      */
     public float getHarvestGain() {
@@ -188,7 +188,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * gets the name of crop
      * @param tileID ID of tile
      * @return name of crop
      */
@@ -197,7 +197,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for farmer's register type
      * @return type of farmer's register
      */
     public String getRegisterType() {
@@ -205,7 +205,7 @@ public class GameModel {
     }
 
     /**
-     *
+     * getter for success of register
      * @return success in registering
      */
     public boolean getRegisterSuccess() {

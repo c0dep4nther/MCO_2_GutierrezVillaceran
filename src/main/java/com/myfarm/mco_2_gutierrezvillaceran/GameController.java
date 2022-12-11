@@ -43,7 +43,7 @@ public class GameController implements Initializable {
     private Label tileLbl;
 
     /**
-     *
+     * initialize game information
      * @param location
      * The location used to resolve relative paths for the root object, or
      * {@code null} if the location is not known.
@@ -121,7 +121,7 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
+     * perform action on click
      * @param event perform action on click
      */
     public void onToolClick(ActionEvent event) {
@@ -145,7 +145,7 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
+     * perform action on Tile
      * @param event perform action on click
      */
 
@@ -283,8 +283,8 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
-     * @param event lets player to plant
+     * performs action on click
+     * @param event lets player plant
      * @throws IOException if file not found
      */
     public void onPlantClick(ActionEvent event) throws IOException {
@@ -306,7 +306,7 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
+     * creates new game
      * @param event creates new game
      * @throws IOException if file not found
      */
@@ -344,7 +344,7 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
+     * status of tile are shown
      * @param toggle if there is an action, the tiles are shown
      */
     public void toggleTile(boolean toggle) {
@@ -437,7 +437,7 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
+     * sets mode of farmer's action
      * @param mode farmer's action mode
      */
      // setters
@@ -446,7 +446,7 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
+     * setter for seed name
      * @param seedName name of seed
      */
 
@@ -455,7 +455,7 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
+     * setter for report of status
      * @param report status of what is happening
      */
     public void setReport(String report) {
@@ -463,7 +463,7 @@ public class GameController implements Initializable {
     }
 
     /**
-     *
+     * setter for game information
      * @param gameData information of the game
      */
 

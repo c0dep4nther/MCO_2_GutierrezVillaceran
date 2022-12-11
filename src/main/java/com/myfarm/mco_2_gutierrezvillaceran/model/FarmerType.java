@@ -27,7 +27,7 @@ public enum FarmerType {
     private final int registerFee;
 
     /**
-     *
+     * constructor for farmer type
      * @param farmerType name of farmer type
      * @param levelRequirement level requirement for updated farmer type
      * @param bonusEarn bonus points earned
@@ -49,7 +49,7 @@ public enum FarmerType {
     }
 
     /**
-     *
+     * getter for farmer type
      * @return farmer type
      */
     public String getFarmerType() {
@@ -57,7 +57,7 @@ public enum FarmerType {
     }
 
     /**
-     *
+     * getter for level requirement
      * @return level requirement
      */
     public int getLvlRequirement() {
@@ -65,7 +65,7 @@ public enum FarmerType {
     }
 
     /**
-     *
+     * getter for bonus limit
      * @return water bonus limit
      */
     public int getWaterBL() {
@@ -73,7 +73,7 @@ public enum FarmerType {
     }
 
     /**
-     *
+     * getter for fertilizer bonus limit
      * @return fertilizer bonus limit
      */
     public int getFertilizerBL() {
@@ -81,7 +81,7 @@ public enum FarmerType {
     }
 
     /**
-     *
+     * getter for registration fee
      * @return registration fee
      */
     public int getRegisterFee() {
@@ -89,7 +89,7 @@ public enum FarmerType {
     }
 
     /**
-     *
+     * getter for bonus earned
      * @return bonus earned
      */
     public int getBonusEarn() {
@@ -97,7 +97,7 @@ public enum FarmerType {
     }
 
     /**
-     *
+     * getter for seed discount
      * @return seed discount
      */
     public int getSeedDiscount() {
