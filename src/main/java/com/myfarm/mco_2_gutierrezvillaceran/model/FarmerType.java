@@ -1,18 +1,29 @@
 package com.myfarm.mco_2_gutierrezvillaceran.model;
-
+/**
+ * enumerate status of farmer
+ */
 public enum FarmerType {
     /**
-     * enumerate status of farmer
+     * player is a farmer
      */
     FARMER("Farmer",0,0,
             0,0,0,
             0),
+    /**
+     * player is a registered farmer
+     */
     REGISTERED("Registered Farmer", 5,1,
             -1,0,0,
             200),
+    /**
+     * player is a distinguished farmer
+     */
     DISTINGUISHED("Distinguished Farmer",10,2,
             -2,1,0,
             300),
+    /**
+     * player is a legendary farmer
+     */
     LEGENDARY("Legendary Farmer",15,4,
             -3,2,1,
             400);

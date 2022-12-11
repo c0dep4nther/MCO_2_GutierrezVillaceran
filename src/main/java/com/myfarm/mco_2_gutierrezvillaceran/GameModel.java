@@ -9,27 +9,54 @@ import com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile;
 
 import java.util.HashMap;
 
+/**
+ * class for game logic
+ */
 public class GameModel {
+
     private Board farmLand = new Board();
     private final Farmer player = new Farmer();
     private final HashMap<String, Plant> seedList = new HashMap<>();
-    public final HashMap<String, Tool> toolInventory = new HashMap<>();
 
+    /**
+     * Hash map for tool inventory
+     */
+    public final HashMap<String, Tool> toolInventory = new HashMap<>();
+    /**
+     * default constructor for GameModel
+     */
+    public GameModel(){}
+
+    /**
+     * adds seed to the hashmap
+     * @param seedID ID of seed
+     * @param seed the seed of plant
+     */
     public void addSeed(String seedID, Plant seed) {
         seedList.put(seedID, seed);
     }
 
+    /**
+     * adds tool of farmer to the hashmap
+     * @param toolID ID of tool
+     * @param tool the tool of farmer
+     */
     public void addTool(String toolID, Tool tool) {
         toolInventory.put(toolID, tool);
     }
 
+    /**
+     * uses tool
+     * @param toolID ID of tool
+     * @param tileID ID of tile
+     */
     public void activeTool(String toolID, int tileID) {
         Tool tool = toolInventory.get(toolID);
         farmLand = player.useTool(tool, farmLand, tileID);
     }
 
     /**
-     * plants seed
+     * plants seed to the selected tile
      * @param seedID ID of seed
      * @param tileID ID of tile
      */

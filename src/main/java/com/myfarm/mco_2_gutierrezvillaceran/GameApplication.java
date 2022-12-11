@@ -7,7 +7,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * starts game application
+ */
 public class GameApplication extends Application {
+    /**
+     * default constructor for GameApplication
+     */
+    public GameApplication(){}
+
     /**
      * starts game
      * @param stage the primary stage for this application, onto which
@@ -25,6 +33,10 @@ public class GameApplication extends Application {
         stage.show();
     }
 
+    /**
+     * String class
+     * @param args stores java command line arguments
+     */
     public static void main(String[] args) {
         launch();
     }

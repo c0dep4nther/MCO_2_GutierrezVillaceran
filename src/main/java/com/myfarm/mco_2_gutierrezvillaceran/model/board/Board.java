@@ -7,6 +7,9 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * game's board
+ */
 public class Board {
     // use hashmap to store integer as key and then tile as value
     private final HashMap<Integer, Tile> tiles = new HashMap<>();

@@ -10,14 +10,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * controller for plant
+ */
 public class PlantController {
     private GameModel gameData;
     private Scene preScene;
-
+    /**
+     * default constructor for PlantController
+     */
+    public PlantController(){}
     /**
      * action performed on select seed
      * @param event selecting seed
-     * @throws IOException
+     * @throws IOException if file not found
      */
     public void onSelectSeed(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("game-view.fxml"));

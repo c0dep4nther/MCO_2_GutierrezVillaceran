@@ -1,5 +1,8 @@
 package com.myfarm.mco_2_gutierrezvillaceran.model;
 
+/**
+ * class for plant
+ */
 public class Plant {
     private final String name;
     private final String type;

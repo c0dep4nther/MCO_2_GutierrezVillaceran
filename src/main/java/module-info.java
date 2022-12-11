@@ -1,3 +1,6 @@
+/**
+ * opens, exports javafx.fml
+ */
 module com.myfarm.mco_2_gutierrezvillaceran {
     requires javafx.controls;
     requires javafx.fxml;

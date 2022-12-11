@@ -1,8 +1,30 @@
 package com.myfarm.mco_2_gutierrezvillaceran.model;
-
+/**
+ * enumerates tile status
+ */
 public enum TileStatus {
     /**
-     * enumerates tile status
+     * tile is unplowed
      */
-    UNPLOWED, PLOWED, PLANTED, WITHERED, HARVESTABLE, ROCK
+    UNPLOWED,
+    /**
+     * tile is plowed
+     */
+    PLOWED,
+    /**
+     * tile is planted with crop
+     */
+    PLANTED,
+    /**
+     * tile has withered plant
+     */
+    WITHERED,
+    /**
+     * tile has harvestable plant
+     */
+    HARVESTABLE,
+    /**
+     * tile has a rock
+     */
+    ROCK
 }

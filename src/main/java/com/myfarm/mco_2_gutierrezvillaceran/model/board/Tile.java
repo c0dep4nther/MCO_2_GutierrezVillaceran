@@ -3,6 +3,9 @@ package com.myfarm.mco_2_gutierrezvillaceran.model.board;
 import com.myfarm.mco_2_gutierrezvillaceran.model.Plant;
 import com.myfarm.mco_2_gutierrezvillaceran.model.TileStatus;
 
+/**
+ * class for tile
+ */
 public class Tile {
     private TileStatus status;
     private Plant crop;
@@ -14,7 +17,8 @@ public class Tile {
     private int harvestDate;
 
     /**
-     * tile constructor
+     * sets tile default information
+     * @param isEdge if tile is on edge
      */
     public Tile(boolean isEdge) {
         status = TileStatus.UNPLOWED;

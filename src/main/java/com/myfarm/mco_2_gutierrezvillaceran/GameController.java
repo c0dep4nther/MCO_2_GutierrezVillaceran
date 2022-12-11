@@ -20,7 +20,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * class for game's controller
+ */
 public class GameController implements Initializable {
+
     private GameModel gameData = new GameModel();
     private FarmerAction mode;
     private String seedName;
@@ -41,6 +45,10 @@ public class GameController implements Initializable {
 
     private Button tileBtn;
     private Label tileLbl;
+    /**
+     * default constructor for GameController
+     */
+    public GameController(){}
 
     /**
      * initialize game information

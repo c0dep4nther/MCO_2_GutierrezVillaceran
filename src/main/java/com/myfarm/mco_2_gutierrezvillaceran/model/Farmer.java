@@ -5,12 +5,20 @@ import com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile;
 
 import java.util.Objects;
 
+/**
+ * farmer's information
+ */
 public class Farmer {
+
     private FarmerType register = FarmerType.FARMER;
     private boolean registerSuccess;
     private float exp = 0;
     private float money = 100;
     private int level = 1;
+    /**
+     * default constructors for Farmer
+     */
+    public Farmer(){}
 
     /**
      * increase level of farmer
@@ -55,6 +63,7 @@ public class Farmer {
      * uses tool on board
      * @param item tool used
      * @param farmLand initialized board
+     * @param tileNumber tile's number
      * @return updated board
      */
     public Board useTool(Tool item, Board farmLand, int tileNumber) {
@@ -82,6 +91,7 @@ public class Farmer {
      * Planting of seeds
      * @param seed plant information
      * @param farmLand board
+     * @param tileNumber tile's number
      * @return updated board
      */
     public Board plantSeed(Plant seed, Board farmLand, int tileNumber) {
@@ -144,6 +154,7 @@ public class Farmer {
     /**
      * harvesting of plant in board
      * @param farmLand board
+     * @param tileNumber tile's number
      * @return updated board
      */
     public Board harvestPlant(Board farmLand, int tileNumber) {

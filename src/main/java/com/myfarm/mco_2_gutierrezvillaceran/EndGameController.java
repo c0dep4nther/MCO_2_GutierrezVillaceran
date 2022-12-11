@@ -9,7 +9,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * controller for ending of game
+ */
 public class EndGameController {
+    /**
+     * default constructor for EndGameController
+     */
+    public EndGameController() {}
+
     /**
      * Restarts on event
      * @param event opens starting scene

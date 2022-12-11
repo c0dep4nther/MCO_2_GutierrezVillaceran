@@ -2,6 +2,9 @@ package com.myfarm.mco_2_gutierrezvillaceran.model;
 
 import com.myfarm.mco_2_gutierrezvillaceran.model.board.Tile;
 
+/**
+ * class for Tool
+ */
 public class Tool {
     private final String name;
     private final int cost;
@@ -23,6 +26,7 @@ public class Tool {
     /**
      * perform action on farmLot
      * @param farmLot tile performed action on
+     * @param money farmer's money
      */
     public void toolAction (Tile farmLot, float money) {
 
