@@ -285,7 +285,7 @@ public class GameController implements Initializable {
     /**
      *
      * @param event lets player to plant
-     * @throws IOException
+     * @throws IOException if file not found
      */
     public void onPlantClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plant-view.fxml"));
@@ -308,7 +308,7 @@ public class GameController implements Initializable {
     /**
      *
      * @param event creates new game
-     * @throws IOException
+     * @throws IOException if file not found
      */
     public void onNewGame(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("endgame-view.fxml"));
@@ -324,7 +324,7 @@ public class GameController implements Initializable {
 
     /**
      * checks if player is losing
-     * @throws IOException
+     * @throws IOException if file not found
      */
     public void loseCheck() throws IOException {
         boolean isGameOver = gameData.checkGameOver();
